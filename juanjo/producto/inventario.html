@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inventario - JuanjoSuper</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/materialize.css">
+</head>
+<body class="#fff3e0 orange lighten-5">
+    <header>
+        <nav class="#ffcc80 orange lighten-3">
+            <div class="nav-wrapper">
+                <a href="../../juanjo/inicio.html" class="brand-logo right">
+                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img" style="max-width: 65px;"></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li class="active"><a href="./inicio-producto.html" data-target="dropdown-1" class="dropdown-trigger">Productos</a>
+                        <ul class="dropdown-content" id="dropdown-1">
+                            <li><a href="./registro.html">Registro</a></li>
+                            <li><a href="./inventario.html">Inventario</a></li>
+                            <li><a href="./categorias.html">Categorias</a></li>
+                            <li><a href="./proveedores.html">Proveedores</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown-2" class="dropdown-trigger">Ventas</a>
+                        <ul class="dropdown-content" id="dropdown-2">
+                            <li><a href="#">Creación</a></li>
+                            <li><a href="#">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown-3" class="dropdown-trigger">Usuarios</a>
+                        <ul class="dropdown-content" id="dropdown-3">
+                            <li><a href="#">Registro</a></li>
+                            <li><a href="#">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown">Reportes</a>
+                    </li>
+                    <li><a href="#" data-target="dropdown">Cerrar Sesión</a>
+                    </li>
+                </ul>
+                <!-- Dropdown Trigger para menú móvil -->
+                <a class="dropdown-trigger hide-on-large-only" href="#" data-target="mobile-dropdown">
+                    <i class="material-icons">dehaze</i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <ul class="dropdown-content" id="mobile-dropdown">
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Ventas</a></li>
+        <li><a href="#">Usuarios</a></li>
+        <li><a href="#">Reportes</a></li>
+    </ul>
+
+    <main>
+        <div class="container">
+            <h3>Inventario de Productos</h3>
+
+            <div class="input-field">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="buscar">
+                <label for="buscar">Buscar Producto</label>
+            </div>
+
+            <ul class="collection" id="lista-productos">
+            </ul>
+
+            <div id="modal-producto" class="modal">
+                <div class="modal-content">
+                    <h4 id="nombre-producto-modal">Nombre del Producto</h4>
+                    <p>Precio: <span id="precio-producto-modal"></span></p>
+                    <p>Existencias: <span id="existencias-producto-modal"></span></p>
+                    <div class="center">
+                        <img id="imagen-producto-modal" src="#" alt="Imagen del Producto" style="max-width: 200px; max-height: 200px;">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                    <a href="#!" class="waves-effect waves-light btn">Editar</a>
+                    <a href="#!" class="waves-effect waves-light btn red">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer #ffcc80 orange lighten-3">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/materialize.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+
+            var dropdowns = document.querySelectorAll('.dropdown-trigger');
+            var options = {
+                coverTrigger: false,
+                closeOnClick: true,
+                hover: true
+            };
+            M.Dropdown.init(dropdowns, options);
+
+            var buscarInput = document.getElementById('buscar');
+
+            var productos = [
+                {
+                    nombre: 'Arroz diana premium',
+                    precio: 3500,
+                    existencias: 50,
+                    imagen: '../../../imagenes/arroz_premium.png'
+                },
+                {
+                    nombre: 'Pan bimbo mediano',
+                    precio: 3000,
+                    existencias: 100,
+                    imagen: '../../../imagenes/PAN-BIMBOO-MEDIANO-X-350-GR-TAJADO.webp'
+                },
+                {
+                    nombre: 'Salsa tomate fruco',
+                    precio: 8000,
+                    existencias: 20,
+                    imagen: '../../../imagenes/salsa-tomate-fruco-sobre-x-80-gramos.jpg'
+                }
+            ];
+
+            function mostrarInformacionProducto(producto) {
+                var modalNombre = document.getElementById('nombre-producto-modal');
+                var modalPrecio = document.getElementById('precio-producto-modal');
+                var modalExistencias = document.getElementById('existencias-producto-modal');
+                var modalImagen = document.getElementById('imagen-producto-modal');
+
+                modalNombre.textContent = producto.nombre;
+                modalPrecio.textContent = '$' + producto.precio;
+                modalExistencias.textContent = producto.existencias;
+                modalImagen.src = producto.imagen;
+
+                var dropdownsModal = document.querySelectorAll('.dropdown-trigger', '#modal-producto');
+                M.Dropdown.init(dropdownsModal, options);
+
+                var modalInstance = M.Modal.init(document.getElementById('modal-producto'));
+                modalInstance.open();
+            }
+
+            function crearListaProductos() {
+                var listaProductos = document.getElementById('lista-productos');
+                listaProductos.innerHTML = '';
+
+                var filtro = buscarInput.value.toLowerCase();
+                var productosFiltrados = productos.filter(function(producto) {
+                    return producto.nombre.toLowerCase().includes(filtro);
+                });
+
+                productosFiltrados.forEach(function(producto) {
+                    var li = document.createElement('li');
+                    li.className = 'collection-item hover';
+                    li.textContent = producto.nombre;
+                    li.addEventListener('click', function() {
+                        mostrarInformacionProducto(producto);
+                    });
+                    listaProductos.appendChild(li);
+                });
+            }
+
+            buscarInput.addEventListener('input', crearListaProductos);
+
+            crearListaProductos();
+        });
+    </script>
+</body>
+</html>

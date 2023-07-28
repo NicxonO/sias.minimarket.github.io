@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Proveedores - JuanjoSuper</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/materialize.css">
+</head>
+<body class="#fff3e0 orange lighten-5">
+    <header>
+        <nav class="#ffcc80 orange lighten-3">
+            <div class="nav-wrapper">
+                <a href="../../juanjo/inicio.html" class="brand-logo right">
+                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img" style="max-width: 65px;"></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li class="active"><a href="./inicio-producto.html" data-target="dropdown-1" class="dropdown-trigger">Productos</a>
+                        <ul class="dropdown-content" id="dropdown-1">
+                            <li><a href="./registro.html">Registro</a></li>
+                            <li><a href="./inventario.html">Inventario</a></li>
+                            <li><a href="./categorias.html">Categorias</a></li>
+                            <li><a href="./proveedores.html">Proveedores</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown-2" class="dropdown-trigger">Ventas</a>
+                        <ul class="dropdown-content" id="dropdown-2">
+                            <li><a href="#">Creación</a></li>
+                            <li><a href="#">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown-3" class="dropdown-trigger">Usuarios</a>
+                        <ul class="dropdown-content" id="dropdown-3">
+                            <li><a href="#">Registro</a></li>
+                            <li><a href="#">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown">Reportes</a>
+                    </li>
+                    <li><a href="#" data-target="dropdown">Cerrar Sesión</a>
+                    </li>
+                </ul>
+                
+                <a class="dropdown-trigger hide-on-large-only" href="#" data-target="mobile-dropdown">
+                    <i class="material-icons">dehaze</i>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <!-- Contenido principal -->
+    <main>
+        <div class="container">
+            <h3>Proveedores</h3>
+
+            <!-- Campo de búsqueda -->
+            <div class="input-field">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="buscar">
+                <label for="buscar">Buscar Proveedor</label>
+            </div>
+
+            <!-- Lista de proveedores -->
+            <ul class="collection" id="lista-proveedores">
+                <!-- Aquí se listarán los proveedores mediante JavaScript -->
+            </ul>
+
+            <!-- Modal para mostrar información detallada del proveedor -->
+            <div id="modal-proveedor" class="modal">
+                <div class="modal-content">
+                    <h4>Información del Proveedor</h4>
+                    <p id="nombre-proveedor-modal"></p>
+                    <p id="telefono-proveedor-modal"></p>
+                    <p id="celular-proveedor-modal"></p>
+                    <p id="dia-trabajo-proveedor-modal"></p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                    <a href="#!" class="waves-effect waves-light btn">Editar</a>
+                    <a href="#!" class="waves-effect waves-light btn red">Eliminar</a>
+                </div>>
+            </div>
+        </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="text" id="nombre" required>
+                        <label for="nombre">Nombre del Proveedor</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="text" id="telefono" required>
+                        <label for="telefono">Teléfono</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="text" id="celular" required>
+                        <label for="celular">Número Celular</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="text" id="dia-trabajo" required>
+                        <label for="dia-trabajo">Día de Trabajo</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <a class="waves-effect waves-light btn" onclick="guardarProveedor()">Guardar</a>
+                        <a class="waves-effect waves-light btn" onclick="limpiarFormulario()">Cancelar</a>
+                        <a class="waves-effect waves-light btn" onclick="limpiarFormulario()">Reestablecer</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </main>
+
+    <!-- Pie de página -->
+    <!-- ... Código del pie de página ... -->
+
+    <script src="../../js/materialize.js"></script>
+    <script>
+        // Datos de ejemplo para la variable 'proveedores'
+        var proveedores = [
+            {
+                nombre: "Proveedor 1",
+                telefono: "123456789",
+                celular: "987654321",
+                diaTrabajo: "Lunes"
+            },
+            {
+                nombre: "Proveedor 2",
+                telefono: "987654321",
+                celular: "123456789",
+                diaTrabajo: "Martes"
+            },
+            {
+                nombre: "Proveedor 3",
+                telefono: "555555555",
+                celular: "999999999",
+                diaTrabajo: "Miércoles"
+            },
+            // Agrega más objetos de proveedores según sea necesario
+        ];
+
+        // Función para mostrar la lista de proveedores
+        function mostrarListaProveedores() {
+            var listaProveedores = document.getElementById('lista-proveedores');
+            listaProveedores.innerHTML = '';
+
+            // Filtrar los proveedores que coincidan con la búsqueda
+            var filtro = buscarInput.value.toLowerCase();
+            var proveedoresFiltrados = proveedores.filter(function(proveedor) {
+                return proveedor.nombre.toLowerCase().includes(filtro);
+            });
+
+            // Crear la lista de proveedores
+            proveedoresFiltrados.forEach(function(proveedor) {
+                var li = document.createElement('li');
+                li.className = 'collection-item';
+                li.textContent = proveedor.nombre;
+                listaProveedores.appendChild(li);
+
+                // Agregar evento clic a cada proveedor para mostrar el modal
+                li.addEventListener('click', function() {
+                    mostrarInformacionProveedor(proveedor);
+                });
+            });
+        }
+
+        // Función para mostrar información detallada del proveedor en el modal
+        function mostrarInformacionProveedor(proveedor) {
+            var modalNombre = document.getElementById('nombre-proveedor-modal');
+            var modalTelefono = document.getElementById('telefono-proveedor-modal');
+            var modalCelular = document.getElementById('celular-proveedor-modal');
+            var modalDiaTrabajo = document.getElementById('dia-trabajo-proveedor-modal');
+
+            modalNombre.textContent = "Nombre: " + proveedor.nombre;
+            modalTelefono.textContent = "Teléfono: " + proveedor.telefono;
+            modalCelular.textContent = "Celular: " + proveedor.celular;
+            modalDiaTrabajo.textContent = "Día de Trabajo: " + proveedor.diaTrabajo;
+
+            // Inicializar el modal y abrirlo
+            var modalInstance = M.Modal.init(document.getElementById('modal-proveedor'));
+            modalInstance.open();
+        }
+
+        // Elemento de búsqueda
+        var buscarInput = document.getElementById('buscar');
+        // Escuchar cambios en el campo de búsqueda para actualizar la lista de proveedores
+        buscarInput.addEventListener('input', mostrarListaProveedores);
+
+        // Mostrar la lista de proveedores inicialmente
+        mostrarListaProveedores();
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var options = {
+                coverTrigger: false,
+                closeOnClick: true,
+                hover: true                
+            };
+            M.Dropdown.init(elems, options);
+        });
+    </script>
+</body>
+</html>

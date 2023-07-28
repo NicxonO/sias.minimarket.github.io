@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Categorías - JuanjoSuper</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/materialize.css">
+</head>
+<body class="#fff3e0 orange lighten-5">
+    <header>
+        <nav class="#ffcc80 orange lighten-3">
+            <div class="nav-wrapper">
+                <a href="../../juanjo/inicio.html" class="brand-logo right">
+                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img" style="max-width: 65px;"></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li class="active"><a href="./inicio-producto.html" data-target="dropdown-1" class="dropdown-trigger">Productos</a>
+                        <ul class="dropdown-content" id="dropdown-1">
+                            <li><a href="./registro.html">Registro</a></li>
+                            <li><a href="./inventario.html">Inventario</a></li>
+                            <li><a href="./categorias.html">Categorias</a></li>
+                            <li><a href="./proveedores.html">Proveedores</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown-2" class="dropdown-trigger">Ventas</a>
+                        <ul class="dropdown-content" id="dropdown-2">
+                            <li><a href="#">Creación</a></li>
+                            <li><a href="#">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown-3" class="dropdown-trigger">Usuarios</a>
+                        <ul class="dropdown-content" id="dropdown-3">
+                            <li><a href="#">Registro</a></li>
+                            <li><a href="#">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown">Reportes</a>
+                    </li>
+                    <li><a href="#" data-target="dropdown">Cerrar Sesión</a>
+                    </li>
+                </ul>
+
+                <a class="dropdown-trigger hide-on-large-only" href="#" data-target="mobile-dropdown">
+                    <i class="material-icons">dehaze</i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h3>Categorías</h3>
+
+            <div class="input-field">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="buscar">
+                <label for="buscar">Buscar Categoría</label>
+            </div>
+
+            <ul class="collection" id="lista-categorias">
+            </ul>
+
+            <div id="modal-categoria" class="modal">
+                <div class="modal-content">
+                    <h4 id="nombre-categoria-modal">Nombre de la Categoría</h4>
+                    <p id="descripcion-categoria-modal">Descripción de la Categoría</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                    <a href="#!" class="waves-effect waves-light btn">Editar</a>
+                    <a href="#!" class="waves-effect waves-light btn red">Eliminar</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" id="nombre-categoria" required>
+                            <label for="nombre-categoria">Nombre de la Categoría</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" id="descripcion-categoria" required>
+                            <label for="descripcion-categoria">Descripción de la Categoría</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <a class="waves-effect waves-light btn" onclick="guardarCategoria()">Guardar</a>
+                            <a class="waves-effect waves-light btn" onclick="limpiarFormulario()">Cancelar</a>
+                            <a class="waves-effect waves-light btn" onclick="limpiarFormulario()">Reestablecer</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/materialize.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var options = {
+                coverTrigger: false,
+                closeOnClick: true,
+                hover: true                
+            };
+            M.Dropdown.init(elems, options);
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+
+            var buscarInput = document.getElementById('buscar');
+
+            var categorias = [
+                {
+                    nombre: 'Carnes',
+                    descripcion: 'Productos cárnicos y embutidos'
+                },
+                {
+                    nombre: 'Lácteos',
+                    descripcion: 'Productos derivados de la leche'
+                },
+                {
+                    nombre: 'Frutas',
+                    descripcion: 'Frutas frescas y en conserva'
+                },
+                {
+                    nombre: 'Verduras',
+                    descripcion: 'Vegetales frescos y congelados'
+                },
+                {
+                    nombre: 'Granos',
+                    descripcion: 'Legumbres y cereales'
+                },
+                {
+                    nombre: 'Panadería',
+                    descripcion: 'Productos horneados y panes'
+                },
+                {
+                    nombre: 'Bebidas',
+                    descripcion: 'Refrescos, jugos y bebidas alcohólicas'
+                },
+                {
+                    nombre: 'Limpieza',
+                    descripcion: 'Productos de limpieza y cuidado del hogar'
+                },
+                {
+                    nombre: 'Higiene',
+                    descripcion: 'Productos de higiene personal'
+                },
+                {
+                    nombre: 'Cuidado del bebé',
+                    descripcion: 'Productos para bebés y niños pequeños'
+                },
+                {
+                    nombre: 'Electrónicos',
+                    descripcion: 'Electrodomésticos y dispositivos electrónicos'
+                },
+                {
+                    nombre: 'Hogar',
+                    descripcion: 'Artículos para el hogar y decoración'
+                }
+            ];
+
+            function mostrarInformacionCategoria(categoria) {
+                var modalNombre = document.getElementById('nombre-categoria-modal');
+                var modalDescripcion = document.getElementById('descripcion-categoria-modal');
+
+                modalNombre.textContent = categoria.nombre;
+                modalDescripcion.textContent = categoria.descripcion;
+
+                var modalInstance = M.Modal.init(document.getElementById('modal-categoria'));
+
+                modalInstance.open();
+            }
+
+            function crearListaCategorias() {
+                var listaCategorias = document.getElementById('lista-categorias');
+                listaCategorias.innerHTML = '';
+
+                var filtro = buscarInput.value.toLowerCase();
+                var categoriasFiltradas = categorias.filter(function(categoria) {
+                    return categoria.nombre.toLowerCase().includes(filtro);
+                });
+
+                categoriasFiltradas.forEach(function(categoria) {
+                    var li = document.createElement('li');
+                    li.className = 'collection-item';
+                    li.textContent = categoria.nombre;
+                    li.addEventListener('click', function() {
+                        mostrarInformacionCategoria(categoria);
+                    });
+                    listaCategorias.appendChild(li);
+                });
+            }
+
+            buscarInput.addEventListener('input', crearListaCategorias);
+
+            crearListaCategorias();
+        });
+    </script>
+</body>
+</html>
