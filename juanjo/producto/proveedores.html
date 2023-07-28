@@ -47,24 +47,20 @@
             </div>
         </nav>
     </header>
-    <!-- Contenido principal -->
+
     <main>
         <div class="container">
             <h3>Proveedores</h3>
 
-            <!-- Campo de búsqueda -->
             <div class="input-field">
                 <i class="material-icons prefix">search</i>
                 <input type="text" id="buscar">
                 <label for="buscar">Buscar Proveedor</label>
             </div>
 
-            <!-- Lista de proveedores -->
             <ul class="collection" id="lista-proveedores">
-                <!-- Aquí se listarán los proveedores mediante JavaScript -->
             </ul>
 
-            <!-- Modal para mostrar información detallada del proveedor -->
             <div id="modal-proveedor" class="modal">
                 <div class="modal-content">
                     <h4>Información del Proveedor</h4>
@@ -114,12 +110,18 @@
     </div>
     </main>
 
-    <!-- Pie de página -->
-    <!-- ... Código del pie de página ... -->
+    <footer class="page-footer #ffcc80 orange lighten-3">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="../../js/materialize.js"></script>
     <script>
-        // Datos de ejemplo para la variable 'proveedores'
         var proveedores = [
             {
                 nombre: "Proveedor 1",
@@ -139,35 +141,29 @@
                 celular: "999999999",
                 diaTrabajo: "Miércoles"
             },
-            // Agrega más objetos de proveedores según sea necesario
         ];
 
-        // Función para mostrar la lista de proveedores
         function mostrarListaProveedores() {
             var listaProveedores = document.getElementById('lista-proveedores');
             listaProveedores.innerHTML = '';
 
-            // Filtrar los proveedores que coincidan con la búsqueda
             var filtro = buscarInput.value.toLowerCase();
             var proveedoresFiltrados = proveedores.filter(function(proveedor) {
                 return proveedor.nombre.toLowerCase().includes(filtro);
             });
 
-            // Crear la lista de proveedores
             proveedoresFiltrados.forEach(function(proveedor) {
                 var li = document.createElement('li');
                 li.className = 'collection-item';
                 li.textContent = proveedor.nombre;
                 listaProveedores.appendChild(li);
 
-                // Agregar evento clic a cada proveedor para mostrar el modal
                 li.addEventListener('click', function() {
                     mostrarInformacionProveedor(proveedor);
                 });
             });
         }
 
-        // Función para mostrar información detallada del proveedor en el modal
         function mostrarInformacionProveedor(proveedor) {
             var modalNombre = document.getElementById('nombre-proveedor-modal');
             var modalTelefono = document.getElementById('telefono-proveedor-modal');
@@ -179,17 +175,13 @@
             modalCelular.textContent = "Celular: " + proveedor.celular;
             modalDiaTrabajo.textContent = "Día de Trabajo: " + proveedor.diaTrabajo;
 
-            // Inicializar el modal y abrirlo
             var modalInstance = M.Modal.init(document.getElementById('modal-proveedor'));
             modalInstance.open();
         }
 
-        // Elemento de búsqueda
         var buscarInput = document.getElementById('buscar');
-        // Escuchar cambios en el campo de búsqueda para actualizar la lista de proveedores
         buscarInput.addEventListener('input', mostrarListaProveedores);
 
-        // Mostrar la lista de proveedores inicialmente
         mostrarListaProveedores();
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.dropdown-trigger');
