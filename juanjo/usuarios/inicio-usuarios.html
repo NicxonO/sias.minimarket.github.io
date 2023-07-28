@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de registro producto - JuanjoSuper</title>
+    <title>Menú Usuarios - JuanjoSuper</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/materialize.css">
 </head>
 <body class="#fff3e0 orange lighten-5">
-    <!-- Encabezado de la página -->
     <header>
         <nav class="#ffcc80 orange lighten-3">
             <div class="nav-wrapper">
                 <a href="../../juanjo/inicio.html" class="brand-logo right">
                     <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img" style="max-width: 65px;"></a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li class="active"><a href="./inicio-producto.html" data-target="dropdown-1" class="dropdown-trigger">Productos</a>
+                    <li><a href="../producto/inicio-producto.html" data-target="dropdown-1" class="dropdown-trigger">Productos</a>
                         <ul class="dropdown-content" id="dropdown-1">
-                            <li><a href="./registro.html">Registro</a></li>
-                            <li><a href="./inventario.html">Inventario</a></li>
-                            <li><a href="./categorias.html">Categorias</a></li>
-                            <li><a href="./proveedores.html">Proveedores</a></li>
+                            <li><a href="../producto/registro.html">Registro</a></li>
+                            <li><a href="../producto/inventario.html">Inventario</a></li>
+                            <li><a href="../producto/categorias.html">Categorías</a></li>
+                            <li><a href="../producto/proveedores.html">Proveedores</a></li>
                         </ul>
                     </li>
                     <li><a href="../ventas/inicio-ventas.html" data-target="dropdown-2" class="dropdown-trigger">Ventas</a>
@@ -30,10 +29,10 @@
                             <li><a href="../ventas/listado-venta.html">Listado</a></li>
                         </ul>
                     </li>
-                    <li><a href="../usuarios/inicio-usuarios.html" data-target="dropdown-3" class="dropdown-trigger">Usuarios</a>
+                    <li class="active"><a href="./inicio-usuarios.html" data-target="dropdown-3" class="dropdown-trigger">Usuarios</a>
                         <ul class="dropdown-content" id="dropdown-3">
-                            <li><a href="../usuarios/creacion-usuarios.html">Registro</a></li>
-                            <li><a href="../usuarios/listado-usuarios.html">Listado</a></li>
+                            <li><a href="./creacion-usuarios.html">Registro</a></li>
+                            <li><a href="./listado-usuarios.html">Listado</a></li>
                         </ul>
                     </li>
                     <li><a href="../reportes/inicio-reportes.html" data-target="dropdown">Reportes</a>
@@ -49,7 +48,6 @@
         </nav>
     </header>
 
-    <!-- Dropdown Structure para menú móvil -->
     <ul class="dropdown-content" id="mobile-dropdown">
         <li><a href="#">Productos</a></li>
         <li><a href="#">Ventas</a></li>
@@ -57,53 +55,30 @@
         <li><a href="#">Reportes</a></li>
     </ul>
 
-    <!-- Contenido principal -->
     <main>
         <div class="container">
-            <h3>Página de Registro de Productos</h3>
-            <p>Contenido de la página de registro de productos...</p>
+            <h3>Menú Usuarios</h3>
+
             <div class="row">
-                <div class="col s12 m4">
+                <div class="col s12 m6">
                     <div class="card">
                         <div class="card-content">
                             <span class="card-title">Registro</span>
-                            <p>Registra un nuevo producto.</p>
+                            <p>Registra un nuevo usuario.</p>
                         </div>
                         <div class="card-action">
-                            <a href="./registro.html">Ir a Registro</a>
+                            <a href="./creacion-usuarios.html">Ir a Registro</a>
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m4">
+                <div class="col s12 m6">
                     <div class="card">
                         <div class="card-content">
-                            <span class="card-title">Inventario</span>
-                            <p>Administra el inventario de productos.</p>
+                            <span class="card-title">Listado</span>
+                            <p>Visualiza la lista de usuarios registrados.</p>
                         </div>
                         <div class="card-action">
-                            <a href="./inventario.html">Ir a Inventario</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">Categorías</span>
-                            <p>Administra las categorías de productos.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="./categorias.html">Ir a Categorías</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">Proveedores</span>
-                            <p>Administra los proveedores de productos.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="./proveedores.html">Ir a Proveedores</a>
+                            <a href="./listado-usuarios.html">Ir a Listado</a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +86,6 @@
         </div>
     </main>
 
-    <!-- Pie de página -->
     <footer class="page-footer #ffcc80 orange lighten-3">
         <div class="container">
             <div class="row">
@@ -123,7 +97,6 @@
     </footer>
 
     <script src="../../js/materialize.js"></script>
-    <!-- Inicializar el Dropdown para menú móvil -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.dropdown-trigger');

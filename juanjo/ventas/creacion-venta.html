@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Registro de Venta - JuanjoSuper</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/materialize.css">
+</head>
+<body class="#fff3e0 orange lighten-5">
+    <!-- Encabezado de la página -->
+    <header>
+        <nav class="#ffcc80 orange lighten-3">
+            <div class="nav-wrapper">
+                <a href="../../juanjo/inicio.html" class="brand-logo right">
+                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img" style="max-width: 65px;"></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="../productos/inicio-producto.html" data-target="dropdown-1" class="dropdown-trigger">Productos</a>
+                        <ul class="dropdown-content" id="dropdown-1">
+                            <li><a href="#">Registro</a></li>
+                            <li><a href="../productos/inventario.html">Inventario</a></li>
+                            <li><a href="../productos/categorias.html">Categorías</a></li>
+                            <li><a href="../productos/proveedores.html">Proveedores</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="./inicio-ventas.html" data-target="dropdown-2" class="dropdown-trigger">Ventas</a>
+                        <ul class="dropdown-content" id="dropdown-2">
+                            <li><a href="./creacion-venta.html">Creación</a></li>
+                            <li><a href="./listado-venta.html">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../usuarios/inicio-usuarios.html" data-target="dropdown-3" class="dropdown-trigger">Usuarios</a>
+                        <ul class="dropdown-content" id="dropdown-3">
+                            <li><a href="../usuarios/creacion-usuarios.html">Registro</a></li>
+                            <li><a href="../usuarios/listado-usuarios.html">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown">Reportes</a>
+                    </li>
+                    <li><a href="../iniciar-sesion.html" data-target="dropdown">Cerrar Sesión</a>
+                    </li>
+                </ul>
+                <!-- Dropdown Trigger para menú móvil -->
+                <a class="dropdown-trigger hide-on-large-only" href="#" data-target="mobile-dropdown">
+                    <i class="material-icons">dehaze</i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Dropdown Structure para menú móvil -->
+    <ul class="dropdown-content" id="mobile-dropdown">
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Ventas</a></li>
+        <li><a href="#">Usuarios</a></li>
+        <li><a href="#">Reportes</a></li>
+    </ul>
+
+    <!-- Contenido principal -->
+    <main>
+        <div class="container">
+            <h3>Registro de Venta</h3>
+            <form id="registro-venta-form">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" id="nombre_cliente" name="nombre_cliente" required>
+                        <label for="nombre_cliente">Nombre del Cliente</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="text" id="documento_cliente" name="documento_cliente" required>
+                        <label for="documento_cliente">Documento del Cliente</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select multiple id="producto" name="producto" data-options="{'dropdownOptions': {'container': document.body}}" required>
+                            <option value="" disabled>Seleccionar Productos</option>
+                            <option value="producto1">Producto 1</option>
+                            <option value="producto2">Producto 2</option>
+                            <option value="producto3">Producto 3</option>
+                            <!-- Agrega más opciones de productos aquí -->
+                        </select>
+                        <label>Producto</label>
+                    </div>
+                    <div class="col s12">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                            <i class="material-icons right">save</i>
+                        </button>
+                        <button class="btn waves-effect waves-light" type="reset" name="action">Restablecer
+                            <i class="material-icons right">refresh</i>
+                        </button>
+                        <a class="btn waves-effect waves-light" href="#">Cancelar
+                            <i class="material-icons right">cancel</i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="page-footer #ffcc80 orange lighten-3">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/materialize.js"></script>
+    <!-- Inicializar los select y el dropdown para menú móvil -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {dropdownOptions: {container: document.body}});
+            
+            var dropdowns = document.querySelectorAll('.dropdown-trigger');
+            var options = {
+                coverTrigger: false,
+                closeOnClick: true,
+                hover: true
+            };
+            M.Dropdown.init(dropdowns, options);
+        });
+    </script>
+</body>
+</html>

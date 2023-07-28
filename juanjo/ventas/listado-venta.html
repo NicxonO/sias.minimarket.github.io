@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Listado de Ventas - JuanjoSuper</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/materialize.css">
+</head>
+<body class="#fff3e0 orange lighten-5">
+    <header>
+        <nav class="#ffcc80 orange lighten-3">
+            <div class="nav-wrapper">
+                <a href="../../juanjo/inicio.html" class="brand-logo right">
+                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img" style="max-width: 65px;"></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="../productos/inicio-producto.html" data-target="dropdown-1" class="dropdown-trigger">Productos</a>
+                        <ul class="dropdown-content" id="dropdown-1">
+                            <li><a href="#">Registro</a></li>
+                            <li><a href="../productos/inventario.html">Inventario</a></li>
+                            <li><a href="../productos/categorias.html">Categorías</a></li>
+                            <li><a href="../productos/proveedores.html">Proveedores</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="./inicio-ventas.html" data-target="dropdown-2" class="dropdown-trigger">Ventas</a>
+                        <ul class="dropdown-content" id="dropdown-2">
+                            <li><a href="./creacion-venta.html">Creación</a></li>
+                            <li><a href="./listado-venta.html">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../usuarios/inicio-usuarios.html" data-target="dropdown-3" class="dropdown-trigger">Usuarios</a>
+                        <ul class="dropdown-content" id="dropdown-3">
+                            <li><a href="../usuarios/creacion-usuarios.html">Registro</a></li>
+                            <li><a href="../usuarios/listado-usuarios.html">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-target="dropdown">Reportes</a>
+                    </li>
+                    <li><a href="../iniciar-sesion.html" data-target="dropdown">Cerrar Sesión</a>
+                    </li>
+                </ul>
+                <a class="dropdown-trigger hide-on-large-only" href="#" data-target="mobile-dropdown">
+                    <i class="material-icons">dehaze</i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <ul class="dropdown-content" id="mobile-dropdown">
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Ventas</a></li>
+        <li><a href="#">Usuarios</a></li>
+        <li><a href="#">Reportes</a></li>
+    </ul>
+
+    <main>
+        <div class="container">
+            <h3>Listado de Ventas</h3>
+
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <i class="material-icons prefix">search</i>
+                        <input type="text" id="buscar">
+                        <label for="buscar">Buscar Cliente</label>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <i class="material-icons prefix">event</i>
+                        <input type="text" class="datepicker" id="filtro-fecha">
+                        <label for="filtro-fecha">Filtrar por Fecha</label>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="collection" id="lista-ventas">
+            </ul>
+
+            <div id="modal-venta" class="modal">
+                <div class="modal-content">
+                    <h4 id="nombre-cliente-modal">Nombre del Cliente</h4>
+                    <p>Documento: <span id="documento-cliente-modal"></span></p>
+                    <ul class="collection" id="productos-comprados-modal">
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                    <a href="#!" class="waves-effect waves-light btn">Editar</a>
+                    <a href="#!" class="waves-effect waves-light btn red">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer #ffcc80 orange lighten-3">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/materialize.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+
+            var datepickers = document.querySelectorAll('.datepicker');
+            var datepickerOptions = {
+                format: 'yyyy-mm-dd',
+                autoClose: true
+            };
+            M.Datepicker.init(datepickers, datepickerOptions);
+
+            var dropdowns = document.querySelectorAll('.dropdown-trigger');
+            var options = {
+                coverTrigger: false,
+                closeOnClick: true,
+                hover: true
+            };
+            M.Dropdown.init(dropdowns, options);
+
+            var buscarInput = document.getElementById('buscar');
+            var filtroFechaInput = document.getElementById('filtro-fecha');
+            var listaVentas = document.getElementById('lista-ventas');
+            var modalVenta = document.getElementById('modal-venta');
+            var nombreClienteModal = document.getElementById('nombre-cliente-modal');
+            var documentoClienteModal = document.getElementById('documento-cliente-modal');
+            var productosCompradosModal = document.getElementById('productos-comprados-modal');
+
+            var ventas = [
+                {
+                    nombreCliente: 'Juan Pérez',
+                    documentoCliente: '123456789',
+                    fecha: '2023-07-21',
+                    productos: [
+                        'Producto 1',
+                        'Producto 3'
+                    ]
+                },
+                {
+                    nombreCliente: 'Ana Gómez',
+                    documentoCliente: '987654321',
+                    fecha: '2023-07-20',
+                    productos: [
+                        'Producto 4',
+                        'Producto 5',
+                        'Producto 6'
+                    ]
+                }
+            ];
+
+            function mostrarInformacionVenta(venta) {
+                nombreClienteModal.textContent = venta.nombreCliente;
+                documentoClienteModal.textContent = venta.documentoCliente;
+
+                productosCompradosModal.innerHTML = '';
+                venta.productos.forEach(function(producto) {
+                    var li = document.createElement('li');
+                    li.className = 'collection-item';
+                    li.textContent = producto;
+                    productosCompradosModal.appendChild(li);
+                });
+
+                var modalInstance = M.Modal.init(modalVenta);
+                modalInstance.open();
+            }
+
+            function crearListaVentas() {
+                var listaVentasHTML = '';
+                var filtroCliente = buscarInput.value.toLowerCase();
+                var filtroFecha = filtroFechaInput.value;
+
+                ventas.forEach(function(venta) {
+                    var cliente = venta.nombreCliente.toLowerCase();
+                    var fecha = venta.fecha;
+
+                    if (cliente.includes(filtroCliente) && (!filtroFecha || fecha === filtroFecha)) {
+                        listaVentasHTML += `
+                            <li class="collection-item hover">
+                                <div>Fecha: ${fecha}, Cliente: ${venta.nombreCliente}, Documento: ${venta.documentoCliente}
+                                    <a href="#modal-venta" class="secondary-content modal-trigger" data-id="${venta.documentoCliente}">
+                                        <i class="material-icons">info</i>
+                                    </a>
+                                    <a href="#" class="secondary-content">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                    <a href="#" class="secondary-content">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </div>
+                            </li>`;
+                    }
+                });
+
+                listaVentas.innerHTML = listaVentasHTML;
+                var listaItems = listaVentas.querySelectorAll('.collection-item');
+                listaItems.forEach(function(item) {
+                    var dataId = item.querySelector('.modal-trigger').getAttribute('data-id');
+                    item.addEventListener('click', function() {
+                        var ventaSeleccionada = ventas.find(function(venta) {
+                            return venta.documentoCliente === dataId;
+                        });
+                        mostrarInformacionVenta(ventaSeleccionada);
+                    });
+                });
+            }
+
+            buscarInput.addEventListener('input', crearListaVentas);
+            filtroFechaInput.addEventListener('change', crearListaVentas);
+
+            crearListaVentas();
+        });
+    </script>
+</body>
+</html>

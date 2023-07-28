@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Usuarios - JuanjoSuper</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/materialize.css">
+</head>
+<body class="#fff3e0 orange lighten-5">
+    <header>
+        <nav class="#ffcc80 orange lighten-3">
+            <div class="nav-wrapper">
+                <a href="../../juanjo/inicio.html" class="brand-logo right">
+                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img" style="max-width: 65px;"></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="../producto/inicio-producto.html" data-target="dropdown-1" class="dropdown-trigger">Productos</a>
+                        <ul class="dropdown-content" id="dropdown-1">
+                            <li><a href="../producto/registro.html">Registro</a></li>
+                            <li><a href="../producto/inventario.html">Inventario</a></li>
+                            <li><a href="../producto/categorias.html">Categorías</a></li>
+                            <li><a href="../producto/proveedores.html">Proveedores</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../ventas/inicio-ventas.html" data-target="dropdown-2" class="dropdown-trigger">Ventas</a>
+                        <ul class="dropdown-content" id="dropdown-2">
+                            <li><a href="../ventas/creacion-venta.html">Creación</a></li>
+                            <li><a href="../ventas/listado-venta.html">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="./inicio-usuarios.html" data-target="dropdown-3" class="dropdown-trigger">Usuarios</a>
+                        <ul class="dropdown-content" id="dropdown-3">
+                            <li><a href="./creacion-usuarios.html">Registro</a></li>
+                            <li><a href="./listado-usuarios.html">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../reportes/inicio-reportes.html" data-target="dropdown">Reportes</a>
+                    </li>
+                    <li><a href="../iniciar-sesion.html" data-target="dropdown">Cerrar Sesión</a>
+                    </li>
+                </ul>
+                <!-- Dropdown Trigger para menú móvil -->
+                <a class="dropdown-trigger hide-on-large-only" href="#" data-target="mobile-dropdown">
+                    <i class="material-icons">dehaze</i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <ul class="dropdown-content" id="mobile-dropdown">
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Ventas</a></li>
+        <li><a href="#">Usuarios</a></li>
+        <li><a href="#">Reportes</a></li>
+    </ul>
+
+    <main>
+        <div class="container">
+            <h3>Listado de Usuarios</h3>
+
+            <div class="input-field">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="buscar">
+                <label for="buscar">Buscar Usuario</label>
+            </div>
+
+            <ul class="collection" id="lista-usuarios">
+                <!-- Aquí se generará la lista de usuarios dinámicamente -->
+            </ul>
+
+            <div id="modal-usuario" class="modal">
+                <div class="modal-content">
+                    <h4 id="nombre-usuario-modal">Nombre del Usuario</h4>
+                    <div class="input-field">
+                        <i class="material-icons prefix">person</i>
+                        <input type="text" id="nombre-usuario" value="">
+                        <label for="nombre-usuario">Nombre de Usuario</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input type="text" id="nombre-completo" value="">
+                        <label for="nombre-completo">Nombre Completo</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">assignment_ind</i>
+                        <input type="text" id="documento" value="">
+                        <label for="documento">Documento de Identidad</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">email</i>
+                        <input type="email" id="email" value="">
+                        <label for="email">E-mail</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">vpn_key</i>
+                        <input type="password" id="contrasena" value="">
+                        <label for="contrasena">Contraseña</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                    <a href="#!" class="waves-effect waves-light btn red">Eliminar</a>
+                    <a href="#!" class="waves-effect waves-light btn">Guardar</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer #ffcc80 orange lighten-3">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/materialize.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var dropdowns = document.querySelectorAll('.dropdown-trigger');
+            var options = {
+                coverTrigger: false,
+                closeOnClick: true,
+                hover: true
+            };
+            M.Dropdown.init(dropdowns, options);
+
+            var buscarInput = document.getElementById('buscar');
+
+            var usuarios = [
+                {
+                    nombreUsuario: 'juan123',
+                    nombreCompleto: 'Juan Pérez',
+                    documento: '12345678',
+                    email: 'juan@example.com',
+                    contrasena: 'juan1234'
+                },
+                {
+                    nombreUsuario: 'maria456',
+                    nombreCompleto: 'María Rodríguez',
+                    documento: '87654321',
+                    email: 'maria@example.com',
+                    contrasena: 'maria4567'
+                },
+                {
+                    nombreUsuario: 'carlos789',
+                    nombreCompleto: 'Carlos Gómez',
+                    documento: '98765432',
+                    email: 'carlos@example.com',
+                    contrasena: 'carlos7890'
+                }
+            ];
+
+            function mostrarInformacionUsuario(usuario) {
+                var modalNombreUsuario = document.getElementById('nombre-usuario');
+                var modalNombreCompleto = document.getElementById('nombre-completo');
+                var modalDocumento = document.getElementById('documento');
+                var modalEmail = document.getElementById('email');
+                var modalContrasena = document.getElementById('contrasena');
+
+                modalNombreUsuario.value = usuario.nombreUsuario;
+                modalNombreCompleto.value = usuario.nombreCompleto;
+                modalDocumento.value = usuario.documento;
+                modalEmail.value = usuario.email;
+                modalContrasena.value = usuario.contrasena;
+
+                var modalInstance = M.Modal.init(document.getElementById('modal-usuario'));
+                modalInstance.open();
+            }
+
+            function crearListaUsuarios() {
+                var listaUsuarios = document.getElementById('lista-usuarios');
+                listaUsuarios.innerHTML = '';
+
+                var filtro = buscarInput.value.toLowerCase();
+                var usuariosFiltrados = usuarios.filter(function(usuario) {
+                    return usuario.nombreCompleto.toLowerCase().includes(filtro);
+                });
+
+                usuariosFiltrados.forEach(function(usuario) {
+                    var li = document.createElement('li');
+                    li.className = 'collection-item hover';
+                    li.textContent = usuario.nombreCompleto;
+                    li.addEventListener('click', function() {
+                        mostrarInformacionUsuario(usuario);
+                    });
+                    listaUsuarios.appendChild(li);
+                });
+            }
+
+            buscarInput.addEventListener('input', crearListaUsuarios);
+
+            crearListaUsuarios();
+        });
+    </script>
+</body>
+</html>
