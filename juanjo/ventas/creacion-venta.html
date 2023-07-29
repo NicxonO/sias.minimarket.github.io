@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,17 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/materialize.css">
 </head>
+
 <body class="#fff3e0 orange lighten-5">
     <header>
         <nav class="#ffcc80 orange lighten-3">
             <div class="nav-wrapper">
                 <a href="../../juanjo/inicio.html" class="brand-logo right">
-                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img" style="max-width: 65px;"></a>
+                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img"
+                        style="max-width: 65px;"></a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="../productos/inicio-producto.html" data-target="dropdown-1" class="dropdown-trigger">Productos</a>
+                    <li><a href="../productos/inicio-producto.html" data-target="dropdown-1"
+                            class="dropdown-trigger">Productos</a>
                         <ul class="dropdown-content" id="dropdown-1">
                             <li><a href="#">Registro</a></li>
                             <li><a href="../productos/inventario.html">Inventario</a></li>
@@ -23,13 +27,15 @@
                             <li><a href="../productos/proveedores.html">Proveedores</a></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="./inicio-ventas.html" data-target="dropdown-2" class="dropdown-trigger">Ventas</a>
+                    <li class="active"><a href="./inicio-ventas.html" data-target="dropdown-2"
+                            class="dropdown-trigger">Ventas</a>
                         <ul class="dropdown-content" id="dropdown-2">
                             <li><a href="./creacion-venta.html">Creación</a></li>
                             <li><a href="./listado-venta.html">Listado</a></li>
                         </ul>
                     </li>
-                    <li><a href="../usuarios/inicio-usuarios.html" data-target="dropdown-3" class="dropdown-trigger">Usuarios</a>
+                    <li><a href="../usuarios/inicio-usuarios.html" data-target="dropdown-3"
+                            class="dropdown-trigger">Usuarios</a>
                         <ul class="dropdown-content" id="dropdown-3">
                             <li><a href="../usuarios/creacion-usuarios.html">Registro</a></li>
                             <li><a href="../usuarios/listado-usuarios.html">Listado</a></li>
@@ -68,7 +74,8 @@
                         <label for="documento_cliente">Documento del Cliente</label>
                     </div>
                     <div class="input-field col s12">
-                        <select multiple id="producto" name="producto" data-options="{'dropdownOptions': {'container': document.body}}" required>
+                        <select multiple id="producto" name="producto"
+                            data-options="{'dropdownOptions': {'container': document.body}}" required>
                             <option value="" disabled>Seleccionar Productos</option>
                             <option value="producto1">Producto 1</option>
                             <option value="producto2">Producto 2</option>
@@ -104,10 +111,10 @@
 
     <script src="../../js/materialize.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems, {dropdownOptions: {container: document.body}});
-            
+            var instances = M.FormSelect.init(elems, { dropdownOptions: { container: document.body } });
+
             var dropdowns = document.querySelectorAll('.dropdown-trigger');
             var options = {
                 coverTrigger: false,
@@ -118,4 +125,5 @@
         });
     </script>
 </body>
+
 </html>

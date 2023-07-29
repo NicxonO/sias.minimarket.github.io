@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,17 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/materialize.css">
 </head>
+
 <body class="#fff3e0 orange lighten-5">
     <header>
         <nav class="#ffcc80 orange lighten-3">
             <div class="nav-wrapper">
                 <a href="../../juanjo/inicio.html" class="brand-logo right">
-                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img" style="max-width: 65px;"></a>
+                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="responsive-img"
+                        style="max-width: 65px;"></a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li class="active"><a href="./inicio-producto.html" data-target="dropdown-1" class="dropdown-trigger">Productos</a>
+                    <li class="active"><a href="./inicio-producto.html" data-target="dropdown-1"
+                            class="dropdown-trigger">Productos</a>
                         <ul class="dropdown-content" id="dropdown-1">
                             <li><a href="./registro.html">Registro</a></li>
                             <li><a href="./inventario.html">Inventario</a></li>
@@ -23,13 +27,15 @@
                             <li><a href="./proveedores.html">Proveedores</a></li>
                         </ul>
                     </li>
-                    <li><a href="../ventas/inicio-ventas.html" data-target="dropdown-2" class="dropdown-trigger">Ventas</a>
+                    <li><a href="../ventas/inicio-ventas.html" data-target="dropdown-2"
+                            class="dropdown-trigger">Ventas</a>
                         <ul class="dropdown-content" id="dropdown-2">
                             <li><a href="../ventas/creacion-venta.html">Creación</a></li>
                             <li><a href="../ventas/listado-venta.html">Listado</a></li>
                         </ul>
                     </li>
-                    <li><a href="../usuarios/inicio-usuarios.html" data-target="dropdown-3" class="dropdown-trigger">Usuarios</a>
+                    <li><a href="../usuarios/inicio-usuarios.html" data-target="dropdown-3"
+                            class="dropdown-trigger">Usuarios</a>
                         <ul class="dropdown-content" id="dropdown-3">
                             <li><a href="../usuarios/creacion-usuarios.html">Registro</a></li>
                             <li><a href="../usuarios/listado-usuarios.html">Listado</a></li>
@@ -40,7 +46,7 @@
                     <li><a href="../iniciar-sesion.html" data-target="dropdown">Cerrar Sesión</a>
                     </li>
                 </ul>
-                
+
                 <a class="dropdown-trigger hide-on-large-only" href="#" data-target="mobile-dropdown">
                     <i class="material-icons">dehaze</i>
                 </a>
@@ -107,7 +113,7 @@
                 </div>
             </form>
         </div>
-    </div>
+        </div>
     </main>
 
     <footer class="page-footer #ffcc80 orange lighten-3">
@@ -148,17 +154,17 @@
             listaProveedores.innerHTML = '';
 
             var filtro = buscarInput.value.toLowerCase();
-            var proveedoresFiltrados = proveedores.filter(function(proveedor) {
+            var proveedoresFiltrados = proveedores.filter(function (proveedor) {
                 return proveedor.nombre.toLowerCase().includes(filtro);
             });
 
-            proveedoresFiltrados.forEach(function(proveedor) {
+            proveedoresFiltrados.forEach(function (proveedor) {
                 var li = document.createElement('li');
                 li.className = 'collection-item';
                 li.textContent = proveedor.nombre;
                 listaProveedores.appendChild(li);
 
-                li.addEventListener('click', function() {
+                li.addEventListener('click', function () {
                     mostrarInformacionProveedor(proveedor);
                 });
             });
@@ -183,15 +189,16 @@
         buscarInput.addEventListener('input', mostrarListaProveedores);
 
         mostrarListaProveedores();
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.dropdown-trigger');
             var options = {
                 coverTrigger: false,
                 closeOnClick: true,
-                hover: true                
+                hover: true
             };
             M.Dropdown.init(elems, options);
         });
     </script>
 </body>
+
 </html>
