@@ -46,24 +46,26 @@
                     <li><a href="../iniciar-sesion.html" data-target="dropdown">Cerrar Sesión</a>
                     </li>
                 </ul>
-                <a class="dropdown-trigger hide-on-large-only" href="#" data-target="mobile-dropdown">
+                <a class="sidenav-trigger" href="#" data-target="mobile-demo">
                     <i class="material-icons">dehaze</i>
                 </a>
             </div>
         </nav>
     </header>
 
-    <ul class="dropdown-content" id="mobile-dropdown">
-        <li><a href="#">Productos</a></li>
-        <li><a href="#">Ventas</a></li>
-        <li><a href="#">Usuarios</a></li>
-        <li><a href="#">Reportes</a></li>
+    <!-- Asegúrate de que el ID sea "mobile-demo" para que coincida con el atributo data-target -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="./inicio-producto.html">Productos</a></li>
+        <li><a href="../ventas/inicio-ventas.html">Ventas</a></li>
+        <li><a href="../usuarios/inicio-usuarios.html">Usuarios</a></li>
+        <li><a href="../reportes/inicio-reportes.html">Reportes</a></li>
+        <li><a href="../iniciar-sesion.html">Cerrar sesión</a></li>
     </ul>
 
     <main>
         <div class="container">
-            <h3>Página de Registro de Productos</h3>
-            <p>Contenido de la página de registro de productos...</p>
+            <h3>Página de inicio de Productos</h3>
+            <p>Contenido de la página de inicio de productos...</p>
             <div class="row">
                 <div class="col s12 m4">
                     <div class="card">
@@ -126,13 +128,18 @@
     <script src="../../js/materialize.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.dropdown-trigger');
+            // Inicializa el menú lateral para dispositivos móviles
+            var elems = document.querySelectorAll('.sidenav');
+            M.Sidenav.init(elems);
+
+            // Inicializa los dropdowns
+            var dropdowns = document.querySelectorAll('.dropdown-trigger');
             var options = {
                 coverTrigger: false,
                 closeOnClick: true,
                 hover: true
             };
-            M.Dropdown.init(elems, options);
+            M.Dropdown.init(dropdowns, options);
         });
     </script>
 </body>

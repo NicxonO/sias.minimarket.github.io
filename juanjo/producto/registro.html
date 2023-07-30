@@ -11,7 +11,6 @@
 </head>
 
 <body class="#fff3e0 orange lighten-5">
-    <!-- Encabezado de la página -->
     <header>
         <nav class="#ffcc80 orange lighten-3">
             <div class="nav-wrapper">
@@ -47,18 +46,19 @@
                     <li><a href="../iniciar-sesion.html" data-target="dropdown">Cerrar Sesión</a>
                     </li>
                 </ul>
-                <a class="dropdown-trigger hide-on-large-only" href="#" data-target="mobile-dropdown">
+                <a class="sidenav-trigger" href="#" data-target="mobile-demo">
                     <i class="material-icons">dehaze</i>
                 </a>
             </div>
         </nav>
     </header>
 
-    <ul class="dropdown-content" id="mobile-dropdown">
-        <li><a href="#">Productos</a></li>
-        <li><a href="#">Ventas</a></li>
-        <li><a href="#">Usuarios</a></li>
-        <li><a href="#">Reportes</a></li>
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="./inicio-producto.html">Productos</a></li>
+        <li><a href="../ventas/inicio-ventas.html">Ventas</a></li>
+        <li><a href="../usuarios/inicio-usuarios.html">Usuarios</a></li>
+        <li><a href="../reportes/inicio-reportes.html">Reportes</a></li>
+        <li><a href="../iniciar-sesion.html">Cerrar sesión</a></li>
     </ul>
 
     <main>
@@ -175,16 +175,21 @@
                 imagenPrevia.style.display = 'none';
             });
         });
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.dropdown-trigger');
-            var options = {
-                coverTrigger: false,
-                closeOnClick: true,
-                hover: true
-            };
-            M.Dropdown.init(elems, options);
-        });
     </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var elems = document.querySelectorAll('.sidenav');
+                M.Sidenav.init(elems);
+
+                var dropdowns = document.querySelectorAll('.dropdown-trigger');
+                var options = {
+                    coverTrigger: false,
+                    closeOnClick: true,
+                    hover: true
+                };
+                M.Dropdown.init(dropdowns, options);
+            });
+        </script>
 </body>
 
 </html>
