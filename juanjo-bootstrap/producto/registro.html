@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Registro de Producto - JuanjoSuper</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div class="container">
+                <a href="../inicio.html" class="navbar-brand">
+                    <img src="../../imagenes/logoBN-noback.png" alt="" class="img-fluid" style="max-width: 65px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Productos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./producto/inicio-producto.html">Productos inicio</a>
+                                <a class="dropdown-item" href="./producto/registro.html">Registro</a>
+                                <a class="dropdown-item" href="./producto/inventario.html">Inventario</a>
+                                <a class="dropdown-item" href="./producto/categorias.html">Categorias</a>
+                                <a class="dropdown-item" href="./producto/proveedores.html">Proveedores</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ventas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./ventas/creacion-venta.html">Creación</a>
+                                <a class="dropdown-item" href="./ventas/listado-venta.html">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Usuarios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./usuarios/creacion-usuarios.html">Registro</a>
+                                <a class="dropdown-item" href="./usuarios/listado-usuarios.html">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./reportes/inicio-reportes.html">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./iniciar-sesion.html">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container mt-5">
+            <h3 class="text-center">Registro de Producto</h3>
+            <form id="registro-producto-form">
+                <div class="row gap-6">
+                    <div class="col-md-6 p-2">
+                        <div class="form-group p-4">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group p-4">
+                            <label for="existencias">Existencias</label>
+                            <input type="number" class="form-control" id="existencias" name="existencias" required>
+                        </div>
+                        <div class="form-group p-4">
+                            <label for="precio">Precio</label>
+                            <input type="number" step="0.01" class="form-control" id="precio" name="precio" required>
+                        </div>
+                        <div class="form-group p-4">
+                            <label for="lote">Lote</label>
+                            <input type="text" class="form-control" id="lote" name="lote" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-2">
+                        <div class="form-group p-4">
+                            <label for="registro_invima">Registro Invima</label>
+                            <input type="text" class="form-control" id="registro_invima" name="registro_invima"
+                                required>
+                        </div>
+                        <div class="form-group p-4">
+                            <label for="categoria">Categoría</label>
+                            <select class="form-control" id="categoria" name="categoria" required>
+                                <option value="" disabled selected>Seleccionar Categoría</option>
+                                <option value="categoria1">Categoría 1</option>
+                                <option value="categoria2">Categoría 2</option>
+                                <option value="categoria3">Categoría 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-4">
+                            <label for="proveedor">Proveedor</label>
+                            <select class="form-control" id="proveedor" name="proveedor" required>
+                                <option value="" disabled selected>Seleccionar Proveedor</option>
+                                <option value="proveedor1">Proveedor 1</option>
+                                <option value="proveedor2">Proveedor 2</option>
+                                <option value="proveedor3">Proveedor 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-4 mt-4">
+                            <label for="imagen">Imagen</label>
+                            <input type="file" class="form-control-file" id="imagen" name="imagen" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="reset" class="btn btn-secondary">Restablecer</button>
+                        <a href="#" class="btn btn-danger">Cancelar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="py-4 bg-warning">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var imagenInput = document.getElementById('imagen');
+            var imagenPrevia = document.getElementById('imagen-previa');
+            imagenInput.addEventListener('change', function (e) {
+                var file = e.target.files[0];
+                var reader = new FileReader();
+                reader.onload = function () {
+                    imagenPrevia.src = reader.result;
+                    imagenPrevia.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            });
+
+            var formulario = document.getElementById('registro-producto-form');
+            formulario.addEventListener('reset', function () {
+                imagenPrevia.src = '#';
+                imagenPrevia.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>
