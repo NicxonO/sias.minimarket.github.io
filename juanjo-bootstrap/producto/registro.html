@@ -26,11 +26,11 @@
                                 Productos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="./producto/inicio-producto.html">Productos inicio</a>
-                                <a class="dropdown-item" href="./producto/registro.html">Registro</a>
-                                <a class="dropdown-item" href="./producto/inventario.html">Inventario</a>
-                                <a class="dropdown-item" href="./producto/categorias.html">Categorias</a>
-                                <a class="dropdown-item" href="./producto/proveedores.html">Proveedores</a>
+                                <a class="dropdown-item" href="inicio-producto.html">Productos inicio</a>
+                                <a class="dropdown-item active" href="#">Registro</a>
+                                <a class="dropdown-item" href="inventario.html">Inventario</a>
+                                <a class="dropdown-item" href="categorias.html">Categorias</a>
+                                <a class="dropdown-item" href="proveedores.html">Proveedores</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -38,8 +38,8 @@
                                 Ventas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="./ventas/creacion-venta.html">Creación</a>
-                                <a class="dropdown-item" href="./ventas/listado-venta.html">Listado</a>
+                                <a class="dropdown-item" href="../ventas/creacion-venta.html">Creación</a>
+                                <a class="dropdown-item" href="../ventas/listado-venta.html">Listado</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -47,15 +47,15 @@
                                 Usuarios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="./usuarios/creacion-usuarios.html">Registro</a>
-                                <a class="dropdown-item" href="./usuarios/listado-usuarios.html">Listado</a>
+                                <a class="dropdown-item" href="../usuarios/creacion-usuarios.html">Registro</a>
+                                <a class="dropdown-item" href="../usuarios/listado-usuarios.html">Listado</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./reportes/inicio-reportes.html">Reportes</a>
+                            <a class="nav-link" href="../reportes/inicio-reportes.html">Reportes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./iniciar-sesion.html">Cerrar Sesión</a>
+                            <a class="nav-link" href="../iniciar-sesion.html">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary" onclick="guardadoProducto()">Guardar</button>
                         <button type="reset" class="btn btn-secondary">Restablecer</button>
                         <a href="#" class="btn btn-danger">Cancelar</a>
                     </div>
@@ -125,7 +125,7 @@
         </div>
     </main>
 
-    <footer class="py-4 bg-warning">
+    <footer class="py-4 bg-warning" style="position: absolute; bottom: 0; width: 100%;">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
@@ -158,6 +158,9 @@
                 imagenPrevia.style.display = 'none';
             });
         });
+        function guardadoProducto() {
+            alert('Producto guardado con exito');
+        };
     </script>
 </body>
 

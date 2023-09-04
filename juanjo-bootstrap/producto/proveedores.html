@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Proveedores - JuanjoSuper</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div class="container">
+                <a href="../inicio.html" class="navbar-brand">
+                    <img src="../../imagenes/logoBN-noback.png" alt="" class="img-fluid" style="max-width: 65px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Productos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="inicio-producto.html">Productos inicio</a>
+                                <a class="dropdown-item" href="registro.html">Registro</a>
+                                <a class="dropdown-item" href="inventario.html">Inventario</a>
+                                <a class="dropdown-item" href="categorias.html">Categorias</a>
+                                <a class="dropdown-item active" href="proveedores.html">Proveedores</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ventas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../ventas/creacion-venta.html">Creación</a>
+                                <a class="dropdown-item" href="../ventas/listado-venta.html">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Usuarios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../usuarios/creacion-usuarios.html">Registro</a>
+                                <a class="dropdown-item" href="../usuarios/listado-usuarios.html">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../reportes/inicio-reportes.html">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../iniciar-sesion.html">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-5">
+        <h3>Proveedores</h3>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="buscar-addon"><i class="material-icons">Buscar</i></span>
+            <input type="text" class="form-control" id="buscar" placeholder="Buscar Proveedor"
+                aria-label="Buscar Proveedor" aria-describedby="buscar-addon">
+        </div>
+
+        <ul class="list-group" id="lista-proveedores">
+        </ul>
+
+        <div class="modal fade" id="modal-proveedor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Información del Proveedor</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="nombre-proveedor-modal"></p>
+                        <p id="telefono-proveedor-modal"></p>
+                        <p id="celular-proveedor-modal"></p>
+                        <p id="dia-trabajo-proveedor-modal"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="editarProveedorBtn">Editar</button>
+                        <button type="button" class="btn btn-danger" id="eliminarProveedorBtn">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-3 mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Agregar proveedor</button>
+
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="12" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Creación de proveedor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="row">
+                    <form class="col-md-6">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre del Proveedor</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="telefono" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="celular" class="form-label">Número Celular</label>
+                            <input type="text" class="form-control" id="celular" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dia-trabajo" class="form-label">Día de Trabajo</label>
+                            <input type="text" class="form-control" id="dia-trabajo" required>
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-primary m-1" id="guardar" onclick="guardarProveedor()">Guardar</button>
+                            <button type="button" class="btn btn-secondary m-1" id="cancelar" onclick="limpiarFormulario()">Cancelar</button>
+                            <button type="button" class="btn btn-secondary m-1" id="reestablecer" onclick="limpiarFormulario    ()">Reestablecer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4 bg-warning" style="position: absolute; bottom: 0; width: 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        var proveedores = [
+            {
+                nombre: "Proveedor 1",
+                telefono: "123456789",
+                celular: "987654321",
+                diaTrabajo: "Lunes"
+            },
+            {
+                nombre: "Proveedor 2",
+                telefono: "987654321",
+                celular: "123456789",
+                diaTrabajo: "Martes"
+            },
+            {
+                nombre: "Proveedor 3",
+                telefono: "555555555",
+                celular: "999999999",
+                diaTrabajo: "Miércoles"
+            },
+        ];
+
+        function mostrarListaProveedores() {
+            var listaProveedores = document.getElementById('lista-proveedores');
+            listaProveedores.innerHTML = '';
+
+            var filtro = document.getElementById('buscar').value.toLowerCase();
+            var proveedoresFiltrados = proveedores.filter(function (proveedor) {
+                return proveedor.nombre.toLowerCase().includes(filtro);
+            });
+
+            proveedoresFiltrados.forEach(function (proveedor) {
+                var li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.textContent = proveedor.nombre;
+                listaProveedores.appendChild(li);
+
+                li.addEventListener('click', function () {
+                    mostrarInformacionProveedor(proveedor);
+                });
+            });
+        }
+
+        function mostrarInformacionProveedor(proveedor) {
+            var modalNombre = document.getElementById('nombre-proveedor-modal');
+            var modalTelefono = document.getElementById('telefono-proveedor-modal');
+            var modalCelular = document.getElementById('celular-proveedor-modal');
+            var modalDiaTrabajo = document.getElementById('dia-trabajo-proveedor-modal');
+
+            modalNombre.textContent = "Nombre: " + proveedor.nombre;
+            modalTelefono.textContent = "Teléfono: " + proveedor.telefono;
+            modalCelular.textContent = "Celular: " + proveedor.celular;
+            modalDiaTrabajo.textContent = "Día de Trabajo: " + proveedor.diaTrabajo;
+
+            var modal = new bootstrap.Modal(document.getElementById('modal-proveedor'));
+            modal.show();
+        }
+
+        var buscarInput = document.getElementById('buscar');
+        buscarInput.addEventListener('input', mostrarListaProveedores);
+
+        mostrarListaProveedores();
+        function guardarProveedor() {
+            var nombre = document.getElementById('nombre').value;
+            var telefono = document.getElementById('telefono').value;
+            var celular = document.getElementById('celular').value;
+            var diaTrabajo = document.getElementById('dia-trabajo').value;
+            console.log(nombre);
+            if ( nombre == '' || telefono == '' || celular == '' || diaTrabajo == '' ){
+                alert("Hay campos sin información en el formulario de registro, por favor completarlos previo a guardado.");
+            }
+            else{
+                // Crear un objeto de proveedor con los datos del formulario
+                var nuevoProveedor = {
+                    nombre: nombre,
+                    telefono: telefono,
+                    celular: celular,
+                    diaTrabajo: diaTrabajo
+                };
+    
+                // Agregar el nuevo proveedor a la lista de proveedores
+                proveedores.push(nuevoProveedor);
+    
+                limpiarFormulario();
+    
+                // Volver a mostrar la lista de proveedores actualizada
+                mostrarListaProveedores();
+            }
+        }
+        function limpiarFormulario() {
+            document.getElementById('nombre').value = '';
+            document.getElementById('telefono').value = '';
+            document.getElementById('celular').value = '';
+            document.getElementById('dia-trabajo').value = '';
+        }
+        function editarProveedor(proveedor) {
+            // Obtener el nombre actual del proveedor
+            var nombreActual = proveedor.nombre;
+            var telefonoActual = proveedor.telefono;
+            var celularActual = proveedor.celular;
+            var diaTrabajoActual = proveedor.diaTrabajo;
+
+            // Solicitar un nuevo nombre al usuario
+            var nuevoNombre = prompt('Editar nombre del proveedor:', nombreActual);
+            var nuevoTelefono = prompt('Editar Telefono del proveedor:', telefonoActual);
+            var nuevoCelular = prompt('Editar Celular del proveedor:', celularActual);
+            var nuevoDiaTrabajo = prompt('Editar Dia de trabajo del proveedor:', diaTrabajoActual);
+
+            // Verificar si el usuario proporcionó un nuevo nombre y no canceló
+            if (nuevoNombre !== '') {
+                // Actualizar el nombre del proveedor en la lista
+                proveedor.nombre = nuevoNombre;
+
+                // Actualizar la información en el modal
+                var modalNombre = document.getElementById('nombre-proveedor-modal');
+                modalNombre.textContent = 'Nombre: ' + nuevoNombre;
+            }
+            if (nuevoTelefono !== '') {
+                // Actualizar el nombre del proveedor en la lista
+                proveedor.telefono = nuevoTelefono;
+
+                // Actualizar la información en el modal
+                var modalTelefono = document.getElementById('telefono-proveedor-modal');
+                modalTelefono.textContent = 'Telefono: ' + nuevoTelefono;
+            }
+            if (nuevoCelular !== '') {
+                // Actualizar el nombre del proveedor en la lista
+                proveedor.celular = nuevoCelular;
+
+                // Actualizar la información en el modal
+                var modalCelular = document.getElementById('celular-proveedor-modal');
+                modalCelular.textContent = 'Nombre: ' + nuevoCelular;
+            }
+            if (nuevoDiaTrabajo !== '') {
+                // Actualizar el nombre del proveedor en la lista
+                proveedor.diaTrabajo = nuevoDiaTrabajo;
+
+                // Actualizar la información en el modal
+                var modalDiaTrabajo = document.getElementById('dia-trabajo-proveedor-modal');
+                modalDiaTrabajo.textContent = 'Nombre: ' + nuevoDiaTrabajo;
+            }
+            mostrarListaProveedores();
+        }
+
+        // Función para eliminar un proveedor
+        function eliminarProveedor(proveedor) {
+            var confirmacion = confirm('¿Estás seguro de que deseas eliminar a ' + proveedor.nombre + '?');
+            if (confirmacion) {
+                // Eliminar el proveedor de la lista
+                var indice = proveedores.indexOf(proveedor);
+                if (indice !== -1) {
+                    proveedores.splice(indice, 1);
+                    mostrarListaProveedores(); // Actualizar la lista de proveedores
+                }
+                $('#modal-proveedor').modal('hide'); // Ocultar el modal después de eliminar
+            }
+        }
+
+        // Obtener los botones del modal
+        var editarProveedorBtn = document.getElementById('editarProveedorBtn');
+        var eliminarProveedorBtn = document.getElementById('eliminarProveedorBtn');
+
+        // Agregar evento click al botón "Editar" en el modal
+        editarProveedorBtn.addEventListener('click', function () {
+            var nombre = document.getElementById('nombre-proveedor-modal').textContent;
+            var proveedor = proveedores.find(function (p) {
+                return p.nombre === nombre.split(': ')[1]; // Obtener el nombre del proveedor
+            });
+            editarProveedor(proveedor);
+        });
+
+        // Agregar evento click al botón "Eliminar" en el modal
+        eliminarProveedorBtn.addEventListener('click', function () {
+            var nombre = document.getElementById('nombre-proveedor-modal').textContent;
+            var proveedor = proveedores.find(function (p) {
+                return p.nombre === nombre.split(': ')[1]; // Obtener el nombre del proveedor
+            });
+            eliminarProveedor(proveedor);
+        });
+    </script>
+</body>
+
+</html>
