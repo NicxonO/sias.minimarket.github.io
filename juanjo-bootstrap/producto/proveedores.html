@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Proveedores - JuanjoSuper</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
 <body class="bg-light">
@@ -15,13 +16,16 @@
                 <a href="../inicio.html" class="navbar-brand">
                     <img src="../../imagenes/logoBN-noback.png" alt="" class="img-fluid" style="max-width: 65px;">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Productos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -33,7 +37,8 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Ventas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -43,7 +48,8 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Usuarios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -75,7 +81,8 @@
         <ul class="list-group" id="lista-proveedores">
         </ul>
 
-        <div class="modal fade" id="modal-proveedor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal-proveedor" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -97,9 +104,11 @@
             </div>
         </div>
 
-        <button class="btn btn-primary mt-3 mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Agregar proveedor</button>
+        <button class="btn btn-primary mt-3 mb-3" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Agregar proveedor</button>
 
-        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="12" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="12"
+            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Creación de proveedor</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -124,9 +133,12 @@
                             <input type="text" class="form-control" id="dia-trabajo" required>
                         </div>
                         <div class="mb-3">
-                            <button type="button" class="btn btn-primary m-1" id="guardar" onclick="guardarProveedor()">Guardar</button>
-                            <button type="button" class="btn btn-secondary m-1" id="cancelar" onclick="limpiarFormulario()">Cancelar</button>
-                            <button type="button" class="btn btn-secondary m-1" id="reestablecer" onclick="limpiarFormulario    ()">Reestablecer</button>
+                            <button type="button" class="btn btn-primary m-1" id="guardar"
+                                onclick="guardarProveedor()">Guardar</button>
+                            <button type="button" class="btn btn-secondary m-1" id="cancelar"
+                                onclick="limpiarFormulario()">Cancelar</button>
+                            <button type="button" class="btn btn-secondary m-1" id="reestablecer"
+                                onclick="limpiarFormulario    ()">Reestablecer</button>
                         </div>
                     </form>
                 </div>
@@ -146,7 +158,9 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
     <script>
         var proveedores = [
             {
@@ -245,24 +259,21 @@
             var celular = document.getElementById('celular').value;
             var diaTrabajo = document.getElementById('dia-trabajo').value;
             console.log(nombre);
-            if ( nombre == '' || telefono == '' || celular == '' || diaTrabajo == '' ){
+            if (nombre == '' || telefono == '' || celular == '' || diaTrabajo == '') {
                 alert("Hay campos sin información en el formulario de registro, por favor completarlos previo a guardado.");
             }
-            else{
-                // Crear un objeto de proveedor con los datos del formulario
+            else {
                 var nuevoProveedor = {
                     nombre: nombre,
                     telefono: telefono,
                     celular: celular,
                     diaTrabajo: diaTrabajo
                 };
-    
-                // Agregar el nuevo proveedor a la lista de proveedores
+
                 proveedores.push(nuevoProveedor);
-    
+
                 limpiarFormulario();
-    
-                // Volver a mostrar la lista de proveedores actualizada
+
                 mostrarListaProveedores();
             }
         }
@@ -273,86 +284,72 @@
             document.getElementById('dia-trabajo').value = '';
         }
         function editarProveedor(proveedor) {
-            // Obtener el nombre actual del proveedor
             var nombreActual = proveedor.nombre;
             var telefonoActual = proveedor.telefono;
             var celularActual = proveedor.celular;
             var diaTrabajoActual = proveedor.diaTrabajo;
 
-            // Solicitar un nuevo nombre al usuario
             var nuevoNombre = prompt('Editar nombre del proveedor:', nombreActual);
             var nuevoTelefono = prompt('Editar Telefono del proveedor:', telefonoActual);
             var nuevoCelular = prompt('Editar Celular del proveedor:', celularActual);
             var nuevoDiaTrabajo = prompt('Editar Dia de trabajo del proveedor:', diaTrabajoActual);
 
-            // Verificar si el usuario proporcionó un nuevo nombre y no canceló
             if (nuevoNombre !== '') {
-                // Actualizar el nombre del proveedor en la lista
+
                 proveedor.nombre = nuevoNombre;
 
-                // Actualizar la información en el modal
                 var modalNombre = document.getElementById('nombre-proveedor-modal');
                 modalNombre.textContent = 'Nombre: ' + nuevoNombre;
             }
             if (nuevoTelefono !== '') {
-                // Actualizar el nombre del proveedor en la lista
+
                 proveedor.telefono = nuevoTelefono;
 
-                // Actualizar la información en el modal
                 var modalTelefono = document.getElementById('telefono-proveedor-modal');
                 modalTelefono.textContent = 'Telefono: ' + nuevoTelefono;
             }
             if (nuevoCelular !== '') {
-                // Actualizar el nombre del proveedor en la lista
                 proveedor.celular = nuevoCelular;
 
-                // Actualizar la información en el modal
                 var modalCelular = document.getElementById('celular-proveedor-modal');
                 modalCelular.textContent = 'Nombre: ' + nuevoCelular;
             }
             if (nuevoDiaTrabajo !== '') {
-                // Actualizar el nombre del proveedor en la lista
                 proveedor.diaTrabajo = nuevoDiaTrabajo;
 
-                // Actualizar la información en el modal
                 var modalDiaTrabajo = document.getElementById('dia-trabajo-proveedor-modal');
                 modalDiaTrabajo.textContent = 'Nombre: ' + nuevoDiaTrabajo;
             }
             mostrarListaProveedores();
         }
 
-        // Función para eliminar un proveedor
         function eliminarProveedor(proveedor) {
             var confirmacion = confirm('¿Estás seguro de que deseas eliminar a ' + proveedor.nombre + '?');
             if (confirmacion) {
-                // Eliminar el proveedor de la lista
                 var indice = proveedores.indexOf(proveedor);
                 if (indice !== -1) {
                     proveedores.splice(indice, 1);
-                    mostrarListaProveedores(); // Actualizar la lista de proveedores
+                    mostrarListaProveedores();
                 }
-                $('#modal-proveedor').modal('hide'); // Ocultar el modal después de eliminar
+                $('#modal-proveedor').modal('hide');
             }
         }
 
-        // Obtener los botones del modal
         var editarProveedorBtn = document.getElementById('editarProveedorBtn');
         var eliminarProveedorBtn = document.getElementById('eliminarProveedorBtn');
 
-        // Agregar evento click al botón "Editar" en el modal
         editarProveedorBtn.addEventListener('click', function () {
             var nombre = document.getElementById('nombre-proveedor-modal').textContent;
             var proveedor = proveedores.find(function (p) {
-                return p.nombre === nombre.split(': ')[1]; // Obtener el nombre del proveedor
+                return p.nombre === nombre.split(': ')[1];
             });
             editarProveedor(proveedor);
         });
 
-        // Agregar evento click al botón "Eliminar" en el modal
         eliminarProveedorBtn.addEventListener('click', function () {
             var nombre = document.getElementById('nombre-proveedor-modal').textContent;
             var proveedor = proveedores.find(function (p) {
-                return p.nombre === nombre.split(': ')[1]; // Obtener el nombre del proveedor
+                return p.nombre === nombre.split(': ')[1];
             });
             eliminarProveedor(proveedor);
         });

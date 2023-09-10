@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Listado de Ventas - JuanjoSuper</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div class="container">
+                <a href="../../juanjo/inicio.html" class="navbar-brand">
+                    <img src="../../../imagenes/logoBN-noback.png" alt="" class="img-fluid" style="max-width: 65px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Productos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">Registro</a>
+                                <a class="dropdown-item" href="../productos/inventario.html">Inventario</a>
+                                <a class="dropdown-item" href="../productos/categorías.html">Categorías</a>
+                                <a class="dropdown-item" href="../productos/proveedores.html">Proveedores</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Ventas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./creacion-venta.html">Creación</a>
+                                <a class="dropdown-item active" href="#">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Usuarios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../usuarios/creacion-usuarios.html">Registro</a>
+                                <a class="dropdown-item" href="../usuarios/listado-usuarios.html">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-target="dropdown">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../iniciar-sesión.html">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <h3>Listado de Ventas</h3>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="input-group">
+                    <span class="input-group-text" id="search-addon">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" class="form-control" id="buscar" placeholder="Buscar Cliente">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="input-group">
+                    <span class="input-group-text" id="calendar-addon">
+                        <i class="bi bi-calendar"></i>
+                    </span>
+                    <input type="text" class="form-control datepicker" id="filtro-fecha"
+                        placeholder="Filtrar por Fecha">
+                </div>
+            </div>
+        </div>
+
+        <ul class="list-group" id="lista-ventas">
+        </ul>
+
+        <div id="modal-venta" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Factura de Venta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Información de la Empresa</h6>
+                        <p>Nombre de la Empresa: <span id="nombre-empresa">Nombre de la Empresa</span></p>
+                        <p>NIT de la Empresa: <span id="nit-empresa">NIT de la Empresa</span></p>
+
+                        <h6>Información de la Venta</h6>
+                        <p>Fecha de la Venta: <span id="fecha-venta">Fecha de la Venta</span></p>
+                        <p>Nombre del Cliente: <span id="nombre-cliente">Nombre del Cliente</span></p>
+
+                        <h6>Productos Vendidos</h6>
+                        <ul id="productos-vendidos">
+                        </ul>
+
+                        <h6>Total de la Factura</h6>
+                        <p>Total: <span id="total-factura">Total de la Factura</span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="imprimir-factura">Imprimir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4 bg-warning" style="bottom: 0; width: 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var datepickerOptions = {
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            };
+
+            $('.datepicker').datepicker(datepickerOptions);
+
+            var buscarInput = document.getElementById('buscar');
+            var filtroFechaInput = document.getElementById('filtro-fecha');
+            var listaVentas = document.getElementById('lista-ventas');
+            var modalVenta = new bootstrap.Modal(document.getElementById('modal-venta'));
+
+            var ventas = [
+                {
+                    nombreCliente: 'Juan Pérez',
+                    documentoCliente: '123456789',
+                    fecha: '2023-07-21',
+                    productos: [
+                        { nombre: 'Arroz', precio: 5000 },
+                        { nombre: 'Frijoles', precio: 3000 },
+                        { nombre: 'Leche', precio: 2500 },
+                        { nombre: 'Azúcar', precio: 2000 }
+                    ]
+                },
+                {
+                    nombreCliente: 'Ana Gómez',
+                    documentoCliente: '987654321',
+                    fecha: '2023-07-20',
+                    productos: [
+                        { nombre: 'Aceite', precio: 8000 },
+                        { nombre: 'Pasta', precio: 1500 },
+                        { nombre: 'Galletas', precio: 3500 },
+                        { nombre: 'Café', precio: 7000 },
+                        { nombre: 'Detergente', precio: 4500 }
+                    ]
+                },
+                {
+                    nombreCliente: 'Carlos Rodríguez',
+                    documentoCliente: '555555555',
+                    fecha: '2023-07-19',
+                    productos: [
+                        { nombre: 'Harina de Maíz', precio: 2200 },
+                        { nombre: 'Jabón de Baño', precio: 1800 },
+                        { nombre: 'Papel Higiénico', precio: 3000 },
+                        { nombre: 'Tomate en Lata', precio: 3500 },
+                        { nombre: 'Pan', precio: 2000 }
+                    ]
+                },
+                {
+                    nombreCliente: 'Luisa Torres',
+                    documentoCliente: '111111111',
+                    fecha: '2023-07-18',
+                    productos: [
+                        { nombre: 'Huevos', precio: 3000 },
+                        { nombre: 'Papa', precio: 2500 },
+                        { nombre: 'Carne de Res', precio: 12000 },
+                        { nombre: 'Queso', precio: 4000 }
+                    ]
+                },
+                {
+                    nombreCliente: 'Sofía Martínez',
+                    documentoCliente: '222222222',
+                    fecha: '2023-07-17',
+                    productos: [
+                        { nombre: 'Pollo', precio: 8000 },
+                        { nombre: 'Pan Integral', precio: 3500 },
+                        { nombre: 'Cerveza', precio: 4500 },
+                        { nombre: 'Pepsi', precio: 2500 }
+                    ]
+                },
+                {
+                    nombreCliente: 'Pedro López',
+                    documentoCliente: '333333333',
+                    fecha: '2023-07-16',
+                    productos: [
+                        { nombre: 'Aceitunas', precio: 3500 },
+                        { nombre: 'Atún', precio: 4500 },
+                        { nombre: 'Pasta de Dientes', precio: 1800 },
+                        { nombre: 'Cepillo de Dientes', precio: 1200 },
+                        { nombre: 'Arvejas', precio: 2800 }
+                    ]
+                },
+                {
+                    nombreCliente: 'María Sánchez',
+                    documentoCliente: '444444444',
+                    fecha: '2023-07-15',
+                    productos: [
+                        { nombre: 'Gaseosa', precio: 2500 },
+                        { nombre: 'Cereal', precio: 3500 },
+                        { nombre: 'Yogur', precio: 1800 },
+                        { nombre: 'Manzanas', precio: 3000 }
+                    ]
+                },
+                {
+                    nombreCliente: 'Andrés García',
+                    documentoCliente: '555555555',
+                    fecha: '2023-07-14',
+                    productos: [
+                        { nombre: 'Pescado', precio: 9500 },
+                        { nombre: 'Pimientos', precio: 3200 },
+                        { nombre: 'Lechuga', precio: 1800 },
+                        { nombre: 'Pepino', precio: 2200 }
+                    ]
+                }
+            ];
+
+
+            function mostrarInformacionVenta(venta) {
+
+                document.getElementById('fecha-venta').textContent = venta.fecha;
+                document.getElementById('nombre-cliente').textContent = venta.nombreCliente;
+                document.getElementById('nombre-empresa').textContent = 'JuanjoSuper';
+                document.getElementById('nit-empresa').textContent = '1000-874-509';
+
+                var productosVendidos = document.getElementById('productos-vendidos');
+                productosVendidos.innerHTML = '';
+
+                venta.productos.forEach(function (producto) {
+                    var li = document.createElement('li');
+                    li.textContent = `${producto.nombre} - Precio: $${producto.precio.toFixed(0)}`;
+                    productosVendidos.appendChild(li);
+                });
+
+                var totalFactura = calcularTotalFactura(venta);
+                document.getElementById('total-factura').textContent = '$' + totalFactura.toFixed(0);
+
+                modalVenta.show();
+            }
+
+
+            function calcularTotalFactura(venta) {
+                var total = 0;
+                venta.productos.forEach(function (producto) {
+                    total += producto.precio;
+                });
+                return total;
+            }
+
+            function crearListaVentas() {
+                var listaVentasHTML = '';
+                var filtroCliente = buscarInput.value.toLowerCase();
+                var filtroFecha = filtroFechaInput.value;
+
+                ventas.forEach(function (venta) {
+                    var cliente = venta.nombreCliente.toLowerCase();
+                    var fecha = venta.fecha;
+
+                    if (cliente.includes(filtroCliente) && (!filtroFecha || fecha.includes(filtroFecha))) {
+                        listaVentasHTML += `
+                            <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer" data-id="${venta.documentoCliente}">
+                                Fecha: ${fecha}, Cliente: ${venta.nombreCliente}, Documento: ${venta.documentoCliente}
+                            </li>`;
+                    }
+                });
+
+                listaVentas.innerHTML = listaVentasHTML;
+                var listaItems = listaVentas.querySelectorAll('.list-group-item');
+                listaItems.forEach(function (item) {
+                    var dataId = item.getAttribute('data-id');
+                    item.addEventListener('click', function () {
+                        var ventaSeleccionada = ventas.find(function (venta) {
+                            return venta.documentoCliente === dataId;
+                        });
+                        mostrarInformacionVenta(ventaSeleccionada);
+                    });
+                });
+            }
+
+            buscarInput.addEventListener('input', crearListaVentas);
+            filtroFechaInput.addEventListener('change', crearListaVentas);
+
+            crearListaVentas();
+
+            document.getElementById('imprimir-factura').addEventListener('click', function () {
+
+                document.getElementById('nombre-empresa').textContent = 'JuanjoSuper';
+                document.getElementById('nit-empresa').textContent = '1000-874-509';
+
+                setTimeout(function () {
+                    window.print();
+                }, 100);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

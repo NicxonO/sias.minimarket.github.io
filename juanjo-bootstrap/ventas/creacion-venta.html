@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Registro de Venta - JuanjoSuper</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div class="container">
+                <a href="../juanjo-bootstrap/inicio.html" class="navbar-brand">
+                    <img src="../imagenes/logoBN-noback.png" alt="" class="img-fluid" style="max-width: 65px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Productos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./producto/inicio-producto.html">Productos inicio</a>
+                                <a class="dropdown-item" href="./producto/registro.html">Registro</a>
+                                <a class="dropdown-item" href="./producto/inventario.html">Inventario</a>
+                                <a class="dropdown-item" href="./producto/categorias.html">Categorias</a>
+                                <a class="dropdown-item" href="./producto/proveedores.html">Proveedores</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Ventas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="inicio-ventas.html">Ventas inicio</a>
+                                <a class="dropdown-item active" href="#">Creación</a>
+                                <a class="dropdown-item" href="listado-venta.html">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Usuarios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./usuarios/inicio-usuarios.html">Usuarios inicio</a>
+                                <a class="dropdown-item" href="./usuarios/creacion-usuarios.html">Registro</a>
+                                <a class="dropdown-item" href="./usuarios/listado-usuarios.html">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./reportes/inicio-reportes.html">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./iniciar-sesion.html">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <h3>Registro de Venta</h3>
+        <form id="registro-venta-form">
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="nombre_cliente" class="form-label">Nombre del Cliente</label>
+                    <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" required>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="documento_cliente" class="form-label">Documento del Cliente</label>
+                    <input type="text" class="form-control" id="documento_cliente" name="documento_cliente" required>
+                </div>
+                <div class="mb-3 col-md-12">
+                    <label for="producto" class="form-label">Buscar Producto</label>
+                    <input type="text" class="form-control" id="buscar-producto" placeholder="Buscar producto">
+                </div>
+                <div class="mb-3 col-md-12">
+                    <label for="producto" class="form-label">Producto</label>
+                    <select class="form-select" id="producto" name="producto" required>
+                        <option value="" disabled selected>Seleccionar Producto</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-md-12">
+                    <button class="btn btn-primary" type="button" id="agregar-producto">Agregar Producto</button>
+                </div>
+                <div class="col-md-12">
+                    <h4>Productos Seleccionados</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productos-seleccionados">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-12">
+                    <h4>Total</h4>
+                    <p id="total">0</p>
+                </div>
+                <div class="col-md-12 p-2">
+                    <button class="btn btn-primary" type="submit" name="action">Guardar</button>
+                    <button class="btn btn-secondary" type="reset" name="action">Restablecer</button>
+                    <a class="btn btn-danger" href="#">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <footer class="py-4 bg-warning" style="bottom: 0; width: 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            var productos = {
+                producto1: { nombre: "Arroz", precio: 3500 },
+                producto2: { nombre: "Frijoles", precio: 2800 },
+                producto3: { nombre: "Leche", precio: 2500 },
+                producto4: { nombre: "Canasta Huevos x30 AA", precio: 16000 },
+                producto5: { nombre: "Pan", precio: 2200 },
+                producto6: { nombre: "Azúcar", precio: 2000 },
+                producto7: { nombre: "Aceite", precio: 4500 },
+                producto8: { nombre: "Pasta", precio: 1800 },
+                producto9: { nombre: "Harina de Trigo", precio: 2800 },
+                producto10: { nombre: "Papa", precio: 1200 }
+            };
+
+            var selectProducto = $('#producto');
+            $.each(productos, function (key, value) {
+                selectProducto.append($('<option>', {
+                    value: key,
+                    text: value.nombre + " ($" + value.precio.toFixed(0) + ")"
+                }));
+            });
+
+            var productosSeleccionados = [];
+            var total = 0;
+
+            $('#buscar-producto').on('input', function () {
+                var filtro = $(this).val().toLowerCase();
+                selectProducto.empty();
+                $.each(productos, function (key, value) {
+                    if (value.nombre.toLowerCase().includes(filtro)) {
+                        selectProducto.append($('<option>', {
+                            value: key,
+                            text: value.nombre + " ($" + value.precio.toFixed(0) + ")"
+                        }));
+                    }
+                });
+            });
+
+            $('#agregar-producto').click(function () {
+                var productoSeleccionado = $('#producto option:selected');
+                if (productoSeleccionado.length > 0) {
+                    var productoKey = productoSeleccionado.val();
+                    var producto = productos[productoKey];
+                    total += producto.precio;
+
+                    productosSeleccionados.push(producto);
+                    actualizarTabla();
+                }
+            });
+
+            function actualizarTabla() {
+                $('#productos-seleccionados').empty();
+                productosSeleccionados.forEach(function (producto) {
+                    $('#productos-seleccionados').append(`<tr><td>${producto.nombre}</td><td>$${producto.precio.toFixed(0)}</td></tr>`);
+                });
+                $('#total').text('$' + total.toFixed(0));
+            }
+        });
+    </script>
+</body>
+
+</html>

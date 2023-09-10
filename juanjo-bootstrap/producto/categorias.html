@@ -37,7 +37,8 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Ventas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -47,7 +48,8 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Usuarios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -241,18 +243,15 @@
             if (nombre == '' || descripcion == '') {
                 alert("Hay campos sin información en el formulario de registro, por favor completarlos previo a guardado.");
             } else {
-                // Crear un objeto de categoría con los datos del formulario
                 var nuevaCategoria = {
                     nombre: nombre,
                     descripcion: descripcion
                 };
 
-                // Agregar la nueva categoría a la lista de categorías
                 categorias.push(nuevaCategoria);
 
                 limpiarFormulario();
 
-                // Volver a mostrar la lista de categorías actualizada
                 mostrarListaCategorias();
             }
         }
@@ -263,66 +262,54 @@
         }
 
         function editarCategoria(categoria) {
-            // Obtener el nombre actual de la categoría
             var nombreActual = categoria.nombre;
             var descripcionActual = categoria.descripcion;
 
-            // Solicitar un nuevo nombre al usuario
             var nuevoNombre = prompt('Editar nombre de la categoría:', nombreActual);
             var nuevaDescripcion = prompt('Editar descripción de la categoría:', descripcionActual);
 
-            // Verificar si el usuario proporcionó un nuevo nombre y no canceló
             if (nuevoNombre !== '') {
-                // Actualizar el nombre de la categoría en la lista
                 categoria.nombre = nuevoNombre;
 
-                // Actualizar la información en el modal
                 var modalNombre = document.getElementById('nombre-categoria-modal');
                 modalNombre.textContent = 'Nombre: ' + nuevoNombre;
             }
             if (nuevaDescripcion !== '') {
-                // Actualizar la descripción de la categoría en la lista
                 categoria.descripcion = nuevaDescripcion;
 
-                // Actualizar la información en el modal
                 var modalDescripcion = document.getElementById('descripcion-categoria-modal');
                 modalDescripcion.textContent = 'Descripción: ' + nuevaDescripcion;
             }
             mostrarListaCategorias();
         }
 
-        // Función para eliminar una categoría
         function eliminarCategoria(categoria) {
             var confirmacion = confirm('¿Estás seguro de que deseas eliminar la categoría ' + categoria.nombre + '?');
             if (confirmacion) {
-                // Eliminar la categoría de la lista
                 var indice = categorias.indexOf(categoria);
                 if (indice !== -1) {
                     categorias.splice(indice, 1);
-                    mostrarListaCategorias(); // Actualizar la lista de categorías
+                    mostrarListaCategorias();
                 }
-                $('#modal-categoria').modal('hide'); // Ocultar el modal después de eliminar
+                $('#modal-categoria').modal('hide');
             }
         }
 
-        // Obtener los botones del modal
         var editarCategoriaBtn = document.getElementById('editarCategoriaBtn');
         var eliminarCategoriaBtn = document.getElementById('eliminarCategoriaBtn');
 
-        // Agregar evento click al botón "Editar" en el modal
         editarCategoriaBtn.addEventListener('click', function () {
             var nombre = document.getElementById('nombre-categoria-modal').textContent;
             var categoria = categorias.find(function (c) {
-                return c.nombre === nombre.split(': ')[1]; // Obtener el nombre de la categoría
+                return c.nombre === nombre.split(': ')[1];
             });
             editarCategoria(categoria);
         });
 
-        // Agregar evento click al botón "Eliminar" en el modal
         eliminarCategoriaBtn.addEventListener('click', function () {
             var nombre = document.getElementById('nombre-categoria-modal').textContent;
             var categoria = categorias.find(function (c) {
-                return c.nombre === nombre.split(': ')[1]; // Obtener el nombre de la categoría
+                return c.nombre === nombre.split(': ')[1];
             });
             eliminarCategoria(categoria);
         });
