@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Usuarios - JuanjoSuper</title>
+    <!-- Link a Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div class="container">
+                <a href="../inicio.html" class="navbar-brand">
+                    <img src="../../imagenes/logoBN-noback.png" alt="" class="img-fluid" style="max-width: 65px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Productos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../producto/inicio-producto.html">Productos inicio</a>
+                                <a class="dropdown-item" href="../producto/registro.html">Registro</a>
+                                <a class="dropdown-item" href="../producto/inventario.html">Inventario</a>
+                                <a class="dropdown-item" href="../producto/categorias.html">Categorias</a>
+                                <a class="dropdown-item" href="../producto/proveedores.html">Proveedores</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ventas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../ventas/inicio-ventas.html">Ventas inicio</a>
+                                <a class="dropdown-item" href="../ventas/creacion-venta.html">Creación</a>
+                                <a class="dropdown-item" href="../ventas/listado-venta.html">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Usuarios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="inicio-usuarios.html">Usuarios inicio</a>
+                                <a class="dropdown-item" href="creacion-usuarios.html">Registro</a>
+                                <a class="dropdown-item active" href="#">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../reportes/inicio-reportes.html">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../iniciar-sesion.html">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <h3>Listado de Usuarios</h3>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i class="material-icons">search</i></span>
+            <input type="text" class="form-control" placeholder="Buscar Usuario" aria-label="Buscar Usuario" aria-describedby="basic-addon1" id="buscar">
+        </div>
+
+        <ul class="list-group" id="lista-usuarios">
+        </ul>
+
+        <div class="modal fade" id="modal-usuario" tabindex="-1" aria-labelledby="modal-usuario-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-usuario-label">Nombre del Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registro-usuario-form">
+                            <div class="mb-3">
+                                <label for="nombre-usuario" class="form-label">Nombre de Usuario</label>
+                                <input type="text" class="form-control" id="nombre-usuario" name="nombre-usuario">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nombre-completo" class="form-label">Nombre Completo</label>
+                                <input type="text" class="form-control" id="nombre-completo" name="nombre-completo">
+                            </div>
+                            <div class="mb-3">
+                                <label for="documento" class="form-label">Documento de Identidad</label>
+                                <input type="text" class="form-control" id="documento" name="documento">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="contrasena" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="contrasena" name="contrasena">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="eliminar-usuario">Eliminar</button>
+                        <button type="button" class="btn btn-primary" id="guardar-usuario">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4 bg-warning" style="position: fixed; bottom: 0; width: 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <script>
+$(document).ready(function () {
+    var buscarInput = $('#buscar');
+    var listaUsuarios = $('#lista-usuarios');
+
+    var usuarios = [
+        {
+            nombreUsuario: 'juan123',
+            nombreCompleto: 'Juan Pérez',
+            documento: '12345678',
+            email: 'juan@example.com',
+            contrasena: 'juan1234'
+        },
+        {
+            nombreUsuario: 'maria456',
+            nombreCompleto: 'María Rodríguez',
+            documento: '87654321',
+            email: 'maria@example.com',
+            contrasena: 'maria4567'
+        },
+        {
+            nombreUsuario: 'carlos789',
+            nombreCompleto: 'Carlos Gómez',
+            documento: '98765432',
+            email: 'carlos@example.com',
+            contrasena: 'carlos7890'
+        }
+    ];
+
+    function mostrarInformacionUsuario(usuario) {
+        $('#nombre-usuario-modal').text(usuario.nombreCompleto);
+        $('#nombre-usuario').val(usuario.nombreUsuario);
+        $('#nombre-completo').val(usuario.nombreCompleto);
+        $('#documento').val(usuario.documento);
+        $('#email').val(usuario.email);
+        $('#contrasena').val(usuario.contrasena);
+
+        $('#modal-usuario').modal('show');
+
+        // Agrega el controlador de eventos para el botón "Guardar" en el modal
+        $('#guardar-usuario').click(function () {
+            // Actualiza la información del usuario con los valores del formulario
+            usuario.nombreUsuario = $('#nombre-usuario').val();
+            usuario.nombreCompleto = $('#nombre-completo').val();
+            usuario.documento = $('#documento').val();
+            usuario.email = $('#email').val();
+            usuario.contrasena = $('#contrasena').val();
+
+            // Cierra el modal
+            $('#modal-usuario').modal('hide');
+
+            // Vuelve a crear la lista de usuarios actualizada
+            crearListaUsuarios();
+        });
+    }
+
+    function crearListaUsuarios() {
+        var filtro = buscarInput.val().toLowerCase();
+        listaUsuarios.html('');
+
+        var usuariosFiltrados = usuarios.filter(function (usuario) {
+            return usuario.nombreCompleto.toLowerCase().includes(filtro);
+        });
+
+        usuariosFiltrados.forEach(function (usuario) {
+            var li = $('<li>').addClass('list-group-item d-flex justify-content-between align-items-center').text(usuario.nombreCompleto);
+            var editarBtn = $('<button>').addClass('btn btn-primary btn-sm mx-1').text('Editar');
+            editarBtn.click(function () {
+                mostrarInformacionUsuario(usuario);
+            });
+            li.append(editarBtn);
+            listaUsuarios.append(li);
+        });
+    }
+
+    buscarInput.on('input', crearListaUsuarios);
+
+    crearListaUsuarios();
+});
+
+
+    </script>
+</body>
+
+</html>

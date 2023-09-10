@@ -4,33 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de registro producto - JuanjoSuper</title>
+    <title>Página de Reportes - JuanjoSuper</title>
+    <!-- Link a Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
-<body>
-
+<body class="bg-light">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-warning">
             <div class="container">
                 <a href="../inicio.html" class="navbar-brand">
                     <img src="../../imagenes/logoBN-noback.png" alt="" class="img-fluid" style="max-width: 65px;">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Productos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item active" href="#">Productos inicio</a>
-                                <a class="dropdown-item" href="registro.html">Registro</a>
-                                <a class="dropdown-item" href="inventario.html">Inventario</a>
-                                <a class="dropdown-item" href="categorias.html">Categorias</a>
-                                <a class="dropdown-item" href="proveedores.html">Proveedores</a>
+                                <a class="dropdown-item" href="../producto/inicio-producto.html">Productos inicio</a>
+                                <a class="dropdown-item" href="../producto/registro.html">Registro</a>
+                                <a class="dropdown-item" href="../producto/inventario.html">Inventario</a>
+                                <a class="dropdown-item" href="../producto/categorias.html">Categorías</a>
+                                <a class="dropdown-item" href="../producto/proveedores.html">Proveedores</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -54,7 +57,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../reportes/inicio-reportes.html">Reportes</a>
+                            <a class="nav-link active" href="#">Reportes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../iniciar-sesion.html">Cerrar Sesión</a>
@@ -65,52 +68,28 @@
         </nav>
     </header>
 
-    <main class="pb-3 pt-3">
-        <div class="container mt-5">
-            <h3 class="text-center">Página de inicio de Productos</h3>
-            <p class="text-center">Contenido de la página de inicio de productos...</p>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Registro</h5>
-                            <p class="card-text">Registra un nuevo producto.</p>
-                            <a href="./registro.html" class="btn btn-primary">Ir a Registro</a>
-                        </div>
-                    </div>
+    <main class="container mt-5">
+        <h3>Página de Reportes</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="desde" class="form-label">Desde</label>
+                    <input type="date" class="form-control" id="desde">
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Inventario</h5>
-                            <p class="card-text">Administra el inventario de productos.</p>
-                            <a href="./inventario.html" class="btn btn-primary">Ir a Inventario</a>
-                        </div>
-                    </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="hasta" class="form-label">Hasta</label>
+                    <input type="date" class="form-control" id="hasta">
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Categorías</h5>
-                            <p class="card-text">Administra las categorías de productos.</p>
-                            <a href="./categorias.html" class="btn btn-primary">Ir a Categorías</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Proveedores</h5>
-                            <p class="card-text">Administra los proveedores de productos.</p>
-                            <a href="./proveedores.html" class="btn btn-primary">Ir a Proveedores</a>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="button" onclick="exportarReporte()">Exportar <i class="bi bi-download"></i></button>
             </div>
         </div>
     </main>
 
-    <footer class="py-4 bg-warning" style="position: fixed; bottom: 0; width: 100%;">
+    <footer class="py-4 bg-warning" style="bottom: 0; width: 100%;">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
@@ -120,10 +99,15 @@
         </div>
     </footer>
 
-    <!-- Import Bootstrap JS and jQuery -->
+    <!-- Scripts de Bootstrap y jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        function exportarReporte() {
+            alert("Reporte exportado exitosamente");
+        }
+    </script>
 </body>
 
 </html>
