@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inventario - JuanjoSuper</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div class="container">
+                <a href="../inicio.html" class="navbar-brand">
+                    <img src="../../imagenes/logoBN-noback.png" alt="" class="img-fluid" style="max-width: 65px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Productos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="inicio-producto.html">Productos inicio</a>
+                                <a class="dropdown-item" href="registro.html">Registro</a>
+                                <a class="dropdown-item active" href="#">Inventario</a>
+                                <a class="dropdown-item" href="categorias.html">Categorias</a>
+                                <a class="dropdown-item" href="proveedores.html">Proveedores</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ventas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../ventas/creacion-venta.html">Creación</a>
+                                <a class="dropdown-item" href="../ventas/listado-venta.html">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Usuarios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../usuarios/creacion-usuarios.html">Registro</a>
+                                <a class="dropdown-item" href="../usuarios/listado-usuarios.html">Listado</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../reportes/inicio-reportes.html">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../iniciar-sesion.html">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-5">
+        <h3>Inventario</h3>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="buscar-addon"><i>Buscar</i></span>
+            <input type="text" class="form-control" id="buscar" placeholder="Buscar Producto"
+                aria-label="Buscar Producto" aria-describedby="buscar-addon">
+        </div>
+
+        <ul class="list-group" id="lista-inventario">
+        </ul>
+
+        <div class="modal fade" id="modal-producto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Información del Producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="nombre-producto-modal"></p>
+                        <p id="descripcion-producto-modal"></p>
+                        <div class="mb-3">
+                            <label for="imagen-producto-modal" class="form-label">Imagen del Producto</label>
+                            <img src="" alt="Imagen del Producto" id="imagen-producto-modal" class="img-fluid">
+                        </div>
+                        <p id="precio-producto-modal"></p>
+                        <p id="stock-producto-modal"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="editarProductoBtn">Editar</button>
+                        <button type="button" class="btn btn-danger" id="eliminarProductoBtn">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-3 mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Agregar Producto</button>
+
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="12" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Agregar Producto al Inventario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="row">
+                    <form class="col-md-6">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre del Producto</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <input type="text" class="form-control" id="descripcion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="precio" class="form-label">Precio</label>
+                            <input type="text" class="form-control" id="precio" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="stock" class="form-label">Stock</label>
+                            <input type="text" class="form-control" id="stock" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagen" class="form-label">Imagen del Producto</label>
+                            <input type="file" class="form-control" id="imagen" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagen-preview" class="form-label">Vista previa de la Imagen</label>
+                            <img src="../../imagenes/placeholder.jpg" alt="Vista previa de la Imagen" id="imagen-preview" class="img-thumbnail">
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-primary m-1" id="guardar" onclick="guardarProducto()">Guardar</button>
+                            <button type="button" class="btn btn-secondary m-1" id="cancelar" onclick="limpiarFormulario()">Cancelar</button>
+                            <button type="button" class="btn btn-secondary m-1" id="reestablecer" onclick="limpiarFormulario()">Reestablecer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4 bg-warning" style="position: absolute; bottom: 0; width: 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <p>&copy; 2023 Nuestra Página. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        var inventario = [
+            {
+                nombre: 'Arroz diana premium',
+                descripcion: "Descripción del Producto 1",
+                precio: '$3.500',
+                stock: '50',
+                imagen: '../../../imagenes/arroz_premium.png'
+            },
+            {
+                nombre: 'Pan bimbo mediano',
+                descripcion: "Descripción del Producto 2",
+                precio: '$5.500',
+                stock: '45',
+                imagen: '../../../imagenes/PAN-BIMBOO-MEDIANO-X-350-GR-TAJADO.webp'
+            },
+            {
+                nombre: 'Salsa tomate fruco',
+                descripcion: "Descripción del Producto 3",
+                precio: '$8.500',
+                stock: '20',
+                imagen: '../../../imagenes/salsa-tomate-fruco-sobre-x-80-gramos.jpg'
+            },
+        ];
+
+        function mostrarListaInventario() {
+            var listaInventario = document.getElementById('lista-inventario');
+            listaInventario.innerHTML = '';
+
+            var filtro = document.getElementById('buscar').value.toLowerCase();
+            var productosFiltrados = inventario.filter(function (producto) {
+                return producto.nombre.toLowerCase().includes(filtro);
+            });
+
+            productosFiltrados.forEach(function (producto) {
+                var li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.textContent = producto.nombre;
+                listaInventario.appendChild(li);
+
+                li.addEventListener('click', function () {
+                    mostrarInformacionProducto(producto);
+                });
+            });
+        }
+
+        function mostrarInformacionProducto(producto) {
+            var modalNombre = document.getElementById('nombre-producto-modal');
+            var modalDescripcion = document.getElementById('descripcion-producto-modal');
+            var modalPrecio = document.getElementById('precio-producto-modal');
+            var modalStock = document.getElementById('stock-producto-modal');
+            var modalImagen = document.getElementById('imagen-producto-modal');
+            var modalImagen = document.getElementById('imagen-producto-modal');
+
+            modalNombre.textContent = "Nombre: " + producto.nombre;
+            modalDescripcion.textContent = "Descripción: " + producto.descripcion;
+            modalPrecio.textContent = "Precio: " + producto.precio;
+            modalStock.textContent = "Stock: " + producto.stock;
+            modalImagen.src = producto.imagen ? producto.imagen : '../../../imagenes/placeholder.jpg';
+
+            var modal = new bootstrap.Modal(document.getElementById('modal-producto'));
+            modal.show();
+        }
+
+        var buscarInput = document.getElementById('buscar');
+        buscarInput.addEventListener('input', mostrarListaInventario);
+
+        mostrarListaInventario();
+
+        function guardarProducto() {
+            var nombre = document.getElementById('nombre').value;
+            var descripcion = document.getElementById('descripcion').value;
+            var precio = document.getElementById('precio').value;
+            var stock = document.getElementById('stock').value;
+            var imagenInput = document.getElementById('imagen');
+            var imagenURL = ''; // Inicializa la URL de la imagen
+
+            if (imagenInput.files.length > 0) {
+                var imagenFile = imagenInput.files[0];
+                imagenURL = URL.createObjectURL(imagenFile);
+            }
+
+            if (nombre == '' || descripcion == '' || precio == '' || stock == '') {
+                alert("Hay campos sin información en el formulario de registro, por favor completarlos previo a guardar.");
+            } else {
+                // Crear un objeto de producto con los datos del formulario
+                var nuevoProducto = {
+                    nombre: nombre,
+                    descripcion: descripcion,
+                    precio: precio,
+                    stock: stock,
+                    imagen: imagenURL
+                };
+
+                // Agregar el nuevo producto al inventario
+                inventario.push(nuevoProducto);
+
+                limpiarFormulario();
+
+                // Volver a mostrar la lista de inventario actualizada
+                mostrarListaInventario();
+            }
+        }
+
+        function limpiarFormulario() {
+            document.getElementById('nombre').value = '';
+            document.getElementById('descripcion').value = '';
+            document.getElementById('precio').value = '';
+            document.getElementById('stock').value = '';
+        }
+
+        function editarProducto(producto) {
+            // Obtener el nombre actual del producto
+            var nombreActual = producto.nombre;
+            var descripcionActual = producto.descripcion;
+            var precioActual = producto.precio;
+            var stockActual = producto.stock;
+
+            // Solicitar un nuevo nombre al usuario
+            var nuevoNombre = prompt('Editar nombre del producto:', nombreActual);
+            var nuevaDescripcion = prompt('Editar descripción del producto:', descripcionActual);
+            var nuevoPrecio = prompt('Editar precio del producto:', precioActual);
+            var nuevoStock = prompt('Editar stock del producto:', stockActual);
+
+            // Verificar si el usuario proporcionó un nuevo nombre y no canceló
+            if (nuevoNombre !== '') {
+                // Actualizar el nombre del producto en la lista
+                producto.nombre = nuevoNombre;
+
+                // Actualizar la información en el modal
+                var modalNombre = document.getElementById('nombre-producto-modal');
+                modalNombre.textContent = 'Nombre: ' + nuevoNombre;
+            }
+            if (nuevaDescripcion !== '') {
+                // Actualizar la descripción del producto en la lista
+                producto.descripcion = nuevaDescripcion;
+
+                // Actualizar la información en el modal
+                var modalDescripcion = document.getElementById('descripcion-producto-modal');
+                modalDescripcion.textContent = 'Descripción: ' + nuevaDescripcion;
+            }
+            if (nuevoPrecio !== '') {
+                // Actualizar el precio del producto en la lista
+                producto.precio = nuevoPrecio;
+
+                // Actualizar la información en el modal
+                var modalPrecio = document.getElementById('precio-producto-modal');
+                modalPrecio.textContent = 'Precio: ' + nuevoPrecio;
+            }
+            if (nuevoStock !== '') {
+                // Actualizar el stock del producto en la lista
+                producto.stock = nuevoStock;
+
+                // Actualizar la información en el modal
+                var modalStock = document.getElementById('stock-producto-modal');
+                modalStock.textContent = 'Stock: ' + nuevoStock;
+            }
+            mostrarListaInventario();
+        }
+
+        // Función para eliminar un producto del inventario
+        function eliminarProducto(producto) {
+            var confirmacion = confirm('¿Estás seguro de que deseas eliminar el producto ' + producto.nombre + '?');
+            if (confirmacion) {
+                // Eliminar el producto del inventario
+                var indice = inventario.indexOf(producto);
+                if (indice !== -1) {
+                    inventario.splice(indice, 1);
+                    mostrarListaInventario(); // Actualizar la lista de inventario
+                }
+                $('#modal-producto').modal('hide'); // Ocultar el modal después de eliminar
+            }
+        }
+
+        // Obtener los botones del modal
+        var editarProductoBtn = document.getElementById('editarProductoBtn');
+        var eliminarProductoBtn = document.getElementById('eliminarProductoBtn');
+
+        // Agregar evento click al botón "Editar" en el modal
+        editarProductoBtn.addEventListener('click', function () {
+            var nombre = document.getElementById('nombre-producto-modal').textContent;
+            var producto = inventario.find(function (p) {
+                return p.nombre === nombre.split(': ')[1]; // Obtener el nombre del producto
+            });
+            editarProducto(producto);
+        });
+
+        // Agregar evento click al botón "Eliminar" en el modal
+        eliminarProductoBtn.addEventListener('click', function () {
+            var nombre = document.getElementById('nombre-producto-modal').textContent;
+            var producto = inventario.find(function (p) {
+                return p.nombre === nombre.split(': ')[1]; // Obtener el nombre del producto
+            });
+            eliminarProducto(producto);
+        });
+        var imagenInput = document.getElementById('imagen');
+        var imagenPreview = document.getElementById('imagen-preview');
+        imagenInput.addEventListener('change', function () {
+            if (imagenInput.files.length > 0) {
+                var imagenFile = imagenInput.files[0];
+                var imagenURL = URL.createObjectURL(imagenFile);
+                imagenPreview.src = imagenURL;
+            } else {
+                // Si no se selecciona un archivo, puedes ocultar la miniatura o mostrar un marcador de posición.
+                // imagenPreview.src = ''; // Esto ocultará la miniatura.
+                imagenPreview.src = '../../../imagenes/placeholder.jpg'; // Puedes mostrar un marcador de posición aquí.
+            }
+        });
+    </script>
+</body>
+
+</html>
