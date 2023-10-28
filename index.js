@@ -3,15 +3,14 @@ const mysql = require("mysql");
 
 const app = express();
 
-app.set("view engine", "ejs");
-app.use(express.json());
-app.use(express.urlencoded({extended:false}));
+const PORT = 3000;
+ 
+app.listen(PORT, function(err){
+    if (err) console.log("Error in server setup")
+    console.log("Server listening on Port", PORT);
+})
 
 app.get("/", function(req, res){
     res.render("registro.ejs")
 })
-
-
-app.listen(4401, function(){
-    console.log("Servidor inicializado con éxito http://localhost:4011");
-});
+console.log("actualizado");
