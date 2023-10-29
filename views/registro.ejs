@@ -6,13 +6,16 @@
     <title>Registro</title>
 </head>
 <body>
-    <h1>Registro nuevos usuarios</h1>
-    <form action="/validar" method="post">
-        Cedula: <input type="number" name="tbl_usu_id" id="tbl_usu_id">
-        Nombre: <input type="text" name="tbl_usu_nombre" id="tbl_usu_nombre">
-        Correo: <input type="text" name="tbl_usu_correo" id="tbl_usu_correo">
-        Contraseña: <input type="password" name="tbl_usu_contrasena" id="tbl_usu_contrasena">
-        Rol: <input type="number" name="tbl_usu_rol" id="tbl_usu_rol">
+    <h1>Registro Nuevo Personal</h1>
+    <form style="display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;" action="/validar" method="post">
+        Cedula: <input type="number" name="identification" id="identification">
+        Nombre: <input type="text" name="name" id="name">
+        Correo: <input type="text" name="email" id="email">
+        Contraseña: <input type="password" name="password" id="password">
+        Rol: <input type="number" name="role" id="role">
         <input type="submit" value="Registrar">
     </form>
 </body>
