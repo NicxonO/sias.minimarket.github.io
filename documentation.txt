@@ -7,3 +7,10 @@ https://www.youtube.com/watch?v=JmJ1WUoUIK4&ab_channel=Fazt
 https://www.npmjs.com/
 
 https://www.youtube.com/watch?v=y2HTHzBaTQE&ab_channel=CarlosAlfaro
+
+next steps:
+
+1. create menu for dashboard
+2. create users crud
+3. create prov crud
+4. create products crud
