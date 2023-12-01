@@ -9,7 +9,7 @@ const configureSession = require('../../session');
 configureSession(router);
 
 router.get("/login", function(req, res){
-    res.render("login.ejs")
+    res.render("login.ejs", {user: req.session.user_id})
 })
 
 router.post("/login", function(req, res){

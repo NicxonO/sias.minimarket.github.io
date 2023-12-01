@@ -8,11 +8,17 @@ expressApp.set("view engine", "ejs");
 expressApp.set('views', __dirname + '/src/views');
 expressApp.use(express.json());
 expressApp.use(express.urlencoded({extended:false}));
+expressApp.use(express.static(__dirname + '/src/uploads'));
+expressApp.use(express.static(__dirname + '/src/js'));
+
 const configureSession = require('./session');
 
 //Routes
 const loginRoutes = require('./src/routes/login');
 const dashboardRoutes = require('./src/routes/dashboard');
+const usersRoutes = require('./src/routes/users').default;
+
+
 
 configureSession(expressApp);
 
@@ -26,7 +32,9 @@ const requireAuth = (req, res, next) => {
     }
 };
 
-expressApp.use(dashboardRoutes,requireAuth);
+expressApp.use(dashboardRoutes);
+expressApp.use(new usersRoutes().ruta);
+
 
 
 
@@ -60,10 +68,6 @@ expressApp.all("/about", function(req, res){
     }
 }) */
 
-
-expressApp.get("/dashboard", function(req, res){
-    res.render("dashboard.ejs")
-})
 /* expressApp.use((req, res) => {
     res.status(404).send(`<h1>Está página no existe</h1>
     <a href="/" target="_blank" rel="noopener noreferrer">Voler al inicio de sesión</a>

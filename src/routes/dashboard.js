@@ -7,7 +7,9 @@ const configureSession = require('../../session');
 configureSession(router);
 
 router.get("/dashboard", function(req, res){
-    res.render("dashboard.ejs")
+    console.log(req.session)
+    res.render("dashboard.ejs",{user:req.session})
 })
 
 module.exports = router;
+
