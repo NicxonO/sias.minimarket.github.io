@@ -8,7 +8,8 @@ configureSession(router);
 
 router.get("/dashboard", function(req, res){
     console.log(req.session)
-    res.render("dashboard.ejs",{user:req.session})
+    console.log("dashboard req")
+    res.render("dashboard.ejs")
 })
 
 module.exports = router;

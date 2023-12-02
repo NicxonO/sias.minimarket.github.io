@@ -9,7 +9,7 @@ const configureSession = require('../../session');
 configureSession(router);
 
 router.get("/login", function(req, res){
-    res.render("login.ejs", {user: req.session.user_id})
+    res.render("login.ejs")
 })
 
 router.post("/login", function(req, res){
@@ -31,6 +31,7 @@ router.post("/login", function(req, res){
                     {
                         req.session.user_id = data[count].tbl_usu_id;
                         console.log(req.session)
+                        console.log("login req")
                         res.redirect("/dashboard");
                     }
                     else
