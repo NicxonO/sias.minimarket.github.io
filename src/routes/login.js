@@ -30,8 +30,6 @@ router.post("/login", function(req, res){
                     if(data[count].tbl_usu_contrasena == password)
                     {
                         req.session.user_id = data[count].tbl_usu_id;
-                        console.log(req.session)
-                        console.log("login req")
                         res.redirect("/dashboard");
                     }
                     else

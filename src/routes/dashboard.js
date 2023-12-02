@@ -7,8 +7,6 @@ const configureSession = require('../../session');
 configureSession(router);
 
 router.get("/dashboard", function(req, res){
-    console.log(req.session)
-    console.log("dashboard req")
     res.render("dashboard.ejs")
 })
 
