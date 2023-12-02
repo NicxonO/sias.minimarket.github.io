@@ -14,7 +14,6 @@ class RouteUsuario {
         this.ruta.get('/consultar2/:Documento', usuarioController.getUsuariosC)
         this.ruta.post('/crear', usuarioController.createUsuarios)
         this.ruta.post('/login', usuarioController.login)
-        this.ruta.post('/loginnivel', usuarioController.loginnivel)
         this.ruta.put('/editar', usuarioController.updateUsuarios)
         this.ruta.delete('/borrar', usuarioController.deleteUsuarios)
     }

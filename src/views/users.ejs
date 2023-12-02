@@ -18,15 +18,56 @@
                         <th>Contraseña</th>
                         <th>Rol</th>
                         <th>Editar</th>
-                        <th>Eliminar</th>
                       </tr>
                     </thead>
                     <tbody id="data">
                     </tbody>
                   </table>
 
-                <form id="registro-usuario-form" style="display: none;">
-                </form>
+                  <div class="modal fade" id="modal-usuario" tabindex="-1" aria-labelledby="modal-usuario-label"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-usuario-label">Nombre del Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registro-usuario-form">
+                            <div class="mb-3">
+                                <label for="update-id" class="form-label">ID Usuario</label>
+                                <input type="text" class="form-control" id="update-id" name="update-id">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="update-name" name="update-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-username" class="form-label">Nombre usuario</label>
+                                <input type="text" class="form-control" id="update-username" name="update-username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="update-email" name="update-email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-password" class="form-label">Contraseña</label>
+                                <input type="text" class="form-control" id="update-password" name="update-password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-rol" class="form-label">Rol</label>
+                                <input type="text" class="form-control" id="update-rol" name="update-rol">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" onclick="eliminarUsuario()" class="btn btn-danger" id="eliminar-usuario">Eliminar</button>
+                        <button type="button" onclick="actualizarInformacionUsuario()" class="btn btn-primary" id="guardar-usuario">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
             </div>
         </div>
         <button class="btn btn-primary mt-3 mb-3" type="button" data-bs-toggle="offcanvas"
@@ -78,89 +119,6 @@
     <%- include('partials/footer'); %>
     <%- include('partials/bootstrap-scripts'); %>
 
-    <script>
-        var lastId;
-        let url = 'http://localhost:3000/';
-        function listarUsuarios(){
-            //Primera consulta de datos
-            fetch(url + 'consultar', {
-                    method: 'GET'
-                    })
-            .then(response => response.json())
-            .then(data => mostrarData(data))
-            .catch(error => console.log(error))
-
-            //Concatena los datos a la tabla
-            const mostrarData = (data) => {
-            let i
-            let body = ""
-            for (i = 0; i < data.length; i++) {
-                body += `<tr>
-                <td>${data[i].tbl_usu_id}</td>
-                <td>${data[i].tbl_usu_nombre}</td>
-                <td>${data[i].tbl_usu_nombre_usuario}</td>
-                <td>${data[i].tbl_usu_correo}</td>
-                <td>${data[i].tbl_usu_contrasena}</td>
-                <td>${data[i].tbl_rol_nombre}</td>
-                <td><button class="btn btn-primary btn-sm mx-1" id="${data[i].tbl_usu_id}">Editar</button></td>
-                <td><button class="btn btn btn-danger btn-sm mx-1" id="${data[i].tbl_usu_id}">Eliminar</button></td>
-                </tr>`
-                lastId = data[i].tbl_usu_id;
-            }
-            document.getElementById('data').innerHTML = body
-            }
-        }
-        listarUsuarios();
-        function registrarUsuario(){
-            var nombre = document.getElementById('nombre').value;
-            var nombreUsuario = document.getElementById('nombre-usuario').value;
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-            var rol = document.getElementById('role').value;
-            if (nombre == '' || nombreUsuario == '' || email == '' || password == '' || rol == '') {
-                alert("Hay campos sin información en el formulario de registro, por favor completarlos previo a guardar.");
-            } else {
-                //Envia datos creados
-                const create = () => {
-                const data = {
-                    "id": lastId+1,
-                    "nombre": nombre,
-                    "nombreUsuario": nombreUsuario,
-                    "email": email,
-                    "password": password,
-                    "rol": rol
-                }
-
-                fetch(url + 'crear', {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                    'Content-Type': 'application/json',
-                    }
-                },
-                ).then((res) => {
-                    if (res.status == 500) {
-                    alert('error interno - Usuario no creado')
-                    } else {
-                    alert('Usuario Creado')
-                    listarUsuarios()
-                    }
-
-                }).catch((err) => {
-                    console.log(err);
-                })
-
-                }
-            create();
-            }
-        }
-        function limpiarFormulario(){
-            document.getElementById('nombre').value = '';
-            document.getElementById('nombre-usuario').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('password').value = '';
-            document.getElementById('role').value = '';
-        }
-    </script>
+    <script src="/users-ejs.js"></script>
 </body>
 </html>

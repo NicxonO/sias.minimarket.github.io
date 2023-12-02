@@ -23,7 +23,7 @@ const usuarioController = {
 
         console.log(Documento)
 
-        const query = 'SELECT * FROM usuarios WHERE documento = ?'
+        const query = 'SELECT * FROM tbl_usuario LEFT JOIN tbl_rol_organizacion on tbl_usuario.tbl_usu_rol = tbl_rol_organizacion.tbl_rol_id WHERE tbl_usu_id = ?'
 
         database.query(query, [Documento], (err, rows) => {
             if (err) {
@@ -70,35 +70,6 @@ const usuarioController = {
 
     },
 
-    loginnivel: (req, res) => {
-
-        const { usuario, pasword } = req.body
-        //let documento
-        //let nivel        
-
-        const query = 'SELECT nivel FROM acceso WHERE usuario = ? and contrasenna = ?'
-
-        database.query(query, [usuario, pasword], (err, rows) => {
-
-            //console.log(rows);
-
-            if (err) {
-                console.log(err);
-            } else {                
-
-                if (rows.length > 0) {
-
-                    res.status(200).json(rows)
-                } else {
-                    res.status(400).json({ "ERROR DATOS": "El usuario no existe" })
-
-
-                }
-            }
-        })
-
-    },
-
     createUsuarios: (req, res) => {
 
         const { id, nombre, nombreUsuario, email, password, rol } = req.body
@@ -118,11 +89,11 @@ const usuarioController = {
 
     updateUsuarios: (req, res) => {
 
-        const { documento, nombre, direccion, telefono } = req.body
+        const { id, nombre, nombreUsuario, email, password, rol } = req.body
 
-        const query = 'UPDATE usuarios SET nombres = ?, direccion = ?, telefono = ? WHERE documento = ?'
+        const query = 'UPDATE tbl_usuario SET tbl_usu_nombre = ?, tbl_usu_nombre_usuario = ?, tbl_usu_correo = ?, tbl_usu_contrasena = ?, tbl_usu_rol = ? WHERE tbl_usu_id = ?'
 
-        database.query(query, [nombre, direccion, telefono, documento], (err, rows) => {
+        database.query(query, [nombre, nombreUsuario, email, password, rol, id], (err, rows) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ 'Error': 'Error en el servidor' })
@@ -135,11 +106,11 @@ const usuarioController = {
 
     deleteUsuarios: (req, res) => {
 
-        const { documento } = req.body
+        const { id } = req.body
 
-        const query = 'DELETE FROM usuarios where documento = ?'
+        const query = 'DELETE FROM tbl_usuario where tbl_usu_id = ?'
 
-        database.query(query, [documento], (err, rows) => {
+        database.query(query, [id], (err, rows) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ 'Error': 'Error en el servidor' })

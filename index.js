@@ -76,5 +76,5 @@ expressApp.all("/about", function(req, res){
 
 expressApp.listen(3000, function(err){
     if (err) console.log("Error in server setup")
-    console.log("Server listening on Port", "http://localhost:3000");
+    console.log("Server listening on Port", "http://localhost:3000/login");
 })
