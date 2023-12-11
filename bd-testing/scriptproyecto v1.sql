@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cliente` (
   `tbl_clie_documento` int DEFAULT NULL,
   `tbl_clie_numero_contacto` int DEFAULT NULL,
   PRIMARY KEY (`tbl_clie_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_cliente`
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `tbl_datos_empresa` (
   `tbl_datos_empresa_correo` varchar(80) DEFAULT NULL,
   `tbl_datos_empresa_iva` int NOT NULL,
   PRIMARY KEY (`tbl_datos_empresa_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_datos_empresa`
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `tbl_detalle_factura` (
   PRIMARY KEY (`tbl_detalle_factura_id`),
   KEY `id_factura_idx` (`tbl_detalle_factura_fact_id`),
   KEY `id_producto_idx` (`tbl_detalle_factura_producto_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_detalle_factura`
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `tbl_detalle_venta` (
   PRIMARY KEY (`tbl_int_venta_producto_id`),
   KEY `venta_producto_idx` (`tbl_int_venta`),
   KEY `productos_venta_idx` (`tbl_int_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_detalle_venta`
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `tbl_factura` (
   KEY `factura_cliente_idx` (`tbl_fact_cliente_id`),
   KEY `factura_empleado_idx` (`tbl_fact_empleado_id`),
   KEY `factura_cabecera_idx` (`tbl_fact_cabecera`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_factura`
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `tbl_metodo_pago` (
   `tbl_metodo_id` int NOT NULL AUTO_INCREMENT,
   `tbl_metodo_nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`tbl_metodo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_metodo_pago`
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `tbl_producto` (
   KEY `proveedor_producto_idx` (`tbl_prod_proveedor`),
   KEY `producto_usuario_idx` (`tbl_prod_usuario`),
   KEY `categoria_producto_idx` (`tbl_prod_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_producto`
@@ -215,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `tbl_producto_categoria` (
   `tbl_producto_categoria_id` int NOT NULL AUTO_INCREMENT,
   `tbl_producto_categoria_nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`tbl_producto_categoria_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_producto_categoria`
@@ -240,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `tbl_proveedor` (
   `tbl_prov_nombre` varchar(45) NOT NULL,
   `tbl_prov_contacto` int NOT NULL,
   PRIMARY KEY (`tbl_prov_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_proveedor`
@@ -268,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `tbl_reporte` (
   `tbl_repo_usuario` int DEFAULT NULL,
   PRIMARY KEY (`tbl_repo_id`),
   KEY `reporte_usuario_idx` (`tbl_repo_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -281,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `tbl_rol_organizacion` (
   `tbl_rol_id` int NOT NULL AUTO_INCREMENT,
   `tbl_rol_nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`tbl_rol_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_rol_organizacion`
@@ -308,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
   PRIMARY KEY (`tbl_usu_id`),
   UNIQUE KEY `tbl_usu_correo_UNIQUE` (`tbl_usu_correo`),
   KEY `rol_usuario_idx` (`tbl_usu_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_usuario`
@@ -339,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `tbl_venta` (
   KEY `metodo_pago_idx` (`tbl_vent_metodo_pago`),
   KEY `empleado_venta_idx` (`tbl_vent_usuario_id`),
   KEY `cliente_venta_idx` (`tbl_vent_cliente_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_venta`

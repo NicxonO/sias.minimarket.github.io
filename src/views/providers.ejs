@@ -1,0 +1,124 @@
+<%- include('partials/header', {title: 'Página usuarios - JuanjoSuper'}); %>
+<body class="bg-light">
+    <%- include('partials/menu'); %>
+
+    <main class="container mt-5">
+
+        <div class="row">
+            <div class="col">
+                <h3>Listado de Usuarios</h3>
+                  <table class="table table-bordered table-striped">
+                    
+                    <thead>
+                      <tr>
+                        <th>ID Usuario</th>
+                        <th>Nombre</th>
+                        <th>Nombre usuario</th>
+                        <th>E-mail</th>
+                        <th>Contraseña</th>
+                        <th>Rol</th>
+                        <th>Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody id="data">
+                    </tbody>
+                  </table>
+
+                  <div class="modal fade" id="modal-usuario" tabindex="-1" aria-labelledby="modal-usuario-label"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-usuario-label">Nombre del Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registro-usuario-form">
+                            <div class="mb-3">
+                                <label for="update-id" class="form-label">ID Usuario</label>
+                                <input type="text" class="form-control" id="update-id" name="update-id">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="update-name" name="update-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-username" class="form-label">Nombre usuario</label>
+                                <input type="text" class="form-control" id="update-username" name="update-username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="update-email" name="update-email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-password" class="form-label">Contraseña</label>
+                                <input type="text" class="form-control" id="update-password" name="update-password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-rol" class="form-label">Rol</label>
+                                <input type="text" class="form-control" id="update-rol" name="update-rol">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" onclick="eliminarUsuario()" class="btn btn-danger" id="eliminar-usuario">Eliminar</button>
+                        <button type="button" onclick="actualizarInformacionUsuario()" class="btn btn-primary" id="guardar-usuario">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3 mb-3" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Agregar Usuario</button>
+
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="12"
+            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Agregar Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="row">
+                    <form class="col-md-6">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre-usuario" class="form-label">Nombre usuario</label>
+                            <input type="text" class="form-control" id="nombre-usuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="text" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="text" class="form-control" id="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Rol</label>
+                            <input type="text" class="form-control" id="role" required>
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-primary m-1" id="guardar"
+                                onclick="registrarUsuario()">Guardar</button>
+                            <button type="button" class="btn btn-secondary m-1" id="cancelar"
+                                onclick="limpiarFormulario()">Cancelar</button>
+                            <button type="button" class="btn btn-secondary m-1" id="reestablecer"
+                                onclick="limpiarFormulario()">Reestablecer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer'); %>
+    <%- include('partials/bootstrap-scripts'); %>
+
+    <script src="/users-ejs.js"></script>
+</body>
+</html>

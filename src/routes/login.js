@@ -1,25 +1,22 @@
-const express = require('express');
-
-const router = express.Router();
-
-var db_conection = require('../../database');
-
+const loginController = require('../controllers/login').default
 const configureSession = require('../../session');
+const express = require('express')
 
-configureSession(router);
 
-router.get("/login", function(req, res){
-    res.render("login.ejs")
-})
+class RouteLogin {
 
-router.post("/login", )
+    constructor() {
+        this.ruta = express.Router()
+        configureSession(this.ruta);
+        this.config()
+    }
 
-router.get('/logout', function(request, response, next){
+    config() {
+        this.ruta.get('/login', loginController.renderLogin)
+        this.ruta.post('/login', loginController.validateUser)
+        this.ruta.get('/logout',loginController.logout)
+    }
 
-    request.session.destroy();
+}
 
-    response.redirect("/login");
-
-});
-
-module.exports = router;
+exports.default = RouteLogin

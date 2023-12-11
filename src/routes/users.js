@@ -1,4 +1,4 @@
-const usuarioController = require('../controllers/usuarios').default
+const usersController = require('../controllers/users').default
 const express = require('express')
 
 class RouteUsuario {
@@ -9,13 +9,12 @@ class RouteUsuario {
     }
 
     config() {
-        this.ruta.get('/usuarios', (req,res)=>{res.render('users.ejs')})
-        this.ruta.get('/consultar', usuarioController.getUsuarios)
-        this.ruta.get('/consultar2/:Documento', usuarioController.getUsuariosC)
-        this.ruta.post('/crear', usuarioController.createUsuarios)
-        this.ruta.post('/login', usuarioController.login)
-        this.ruta.put('/editar', usuarioController.updateUsuarios)
-        this.ruta.delete('/borrar', usuarioController.deleteUsuarios)
+        this.ruta.get('/usuarios', usersController.renderUsers)
+        this.ruta.get('/consultar', usersController.getUsuarios)
+        this.ruta.get('/consultarusuario/:Documento', usersController.getUsuariosC)
+        this.ruta.post('/crear', usersController.createUsuarios)
+        this.ruta.put('/editar', usersController.updateUsuarios)
+        this.ruta.delete('/eliminar', usersController.deleteUsuarios)
     }
 
 }

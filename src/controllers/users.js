@@ -41,35 +41,6 @@ const usuarioController = {
         })
     },
 
-    login: (req, res) => {
-
-        const { usuario, pasword } = req.body
-
-        const query = 'SELECT COUNT(*) sum FROM acceso WHERE usuario = ? and contrasenna = ?'
-
-        database.query(query, [usuario, pasword], (err, rows) => {
-
-            if (err) {
-                console.log(err);
-            } else {
-
-                console.log(JSON.stringify(rows));
-
-                const count = JSON.parse(JSON.stringify(rows))[0]['sum']
-
-                if (count == 0) {
-                    res.status(400).json({ 'Error': 'No existe' })
-                } else {
-                    res.status(200).json({ 'Exito': 'Existe' })
-                }
-
-
-            }
-
-        })
-
-    },
-
     createUsuarios: (req, res) => {
 
         const { id, nombre, nombreUsuario, email, password, rol } = req.body
@@ -119,6 +90,9 @@ const usuarioController = {
             }
         })
 
+    },
+    renderUsers: (req,res) => {
+        res.render('users.ejs')
     }
 
 }

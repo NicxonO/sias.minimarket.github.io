@@ -86,7 +86,7 @@ function limpiarFormulario() {
     document.getElementById("role").value = "";
 }
 function mostrarInfoUsuario(userId) {
-    fetch(url + "consultar2/" + userId, {
+    fetch(url + "consultarusuario/" + userId, {
         method: "GET",
     })
         .then((response) => response.json())
@@ -150,7 +150,7 @@ function eliminarUsuario() {
     const data = {
         id: idActual,
     };
-    fetch(url + "borrar", {
+    fetch(url + "eliminar", {
         method: "DELETE",
         body: JSON.stringify(data),
         headers: {

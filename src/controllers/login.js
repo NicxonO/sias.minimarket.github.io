@@ -1,4 +1,4 @@
-const database = require('../../database')
+const db_conection = require('../../database')
 
 const loginController = {
 
@@ -40,6 +40,16 @@ const loginController = {
             res.send('Ingresa nuevamente el email y la contraseña');
             res.end();
         }
+    },
+    logout: function(request, response, next){
+
+        request.session.destroy();
+    
+        response.redirect("/login");
+    
+    },
+    renderLogin: function(req, res){
+        res.render("login.ejs")
     }
 
 }

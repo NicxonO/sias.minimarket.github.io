@@ -21,9 +21,12 @@ var sessionmiddleware = session({
 
 
 //Routes
-const loginRoutes = require('./src/routes/login');
 const dashboardRoutes = require('./src/routes/dashboard');
 const usersRoutes = require('./src/routes/users').default;
+const loginRoutes = require('./src/routes/login').default;
+const providersRoutes = require('./src/routes/providers').default;
+
+
 
 expressApp.use(sessionmiddleware);
 expressApp.use(function (req, res, next) {
@@ -37,9 +40,11 @@ expressApp.use(function (req, res, next) {
     }
 });
 
-expressApp.use(loginRoutes);
+expressApp.use(new loginRoutes().ruta);
 expressApp.use(dashboardRoutes);
 expressApp.use(new usersRoutes().ruta);
+expressApp.use(new providersRoutes().ruta);
+
 
 
 
