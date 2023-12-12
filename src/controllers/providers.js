@@ -2,11 +2,11 @@ const db_conection = require('../../database')
 
 const providerController = {
 
-    getUsuarios: (req, res) => {
+    getProviders: (req, res) => {
 
-        const query = 'SELECT * FROM tbl_usuario LEFT JOIN tbl_rol_organizacion on tbl_usuario.tbl_usu_rol = tbl_rol_organizacion.tbl_rol_id'
+        const query = 'SELECT * FROM tbl_proveedor'
 
-        database.query(query, (err, rows) => {
+        db_conection.query(query, (err, rows) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ 'Error': 'Error en el servidor' })
@@ -17,15 +17,13 @@ const providerController = {
 
     },
 
-    getUsuariosC: (req, res) => {
+    getProvider: (req, res) => {
 
         const { Documento } = req.params
 
-        console.log(Documento)
+        const query = 'SELECT * FROM tbl_proveedor WHERE tbl_prov_id = ?'
 
-        const query = 'SELECT * FROM tbl_usuario LEFT JOIN tbl_rol_organizacion on tbl_usuario.tbl_usu_rol = tbl_rol_organizacion.tbl_rol_id WHERE tbl_usu_id = ?'
-
-        database.query(query, [Documento], (err, rows) => {
+        db_conection.query(query, [Documento], (err, rows) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ 'Error': 'Error en el servidor' })
@@ -34,59 +32,59 @@ const providerController = {
                 if (rows.length > 0) {
                     res.status(200).json(rows)
                 } else {
-                    res.status(400).json({ "No encontrado": "El usuario no existe" })
+                    res.status(400).json({ "No encontrado": "El Proveedor no existe" })
                 }
 
             }
         })
     },
 
-    createUsuarios: (req, res) => {
+    createProvider: (req, res) => {
 
-        const { id, nombre, nombreUsuario, email, password, rol } = req.body
+        const { id, nombreProvedor, telefono} = req.body
 
-        const query = 'INSERT INTO tbl_usuario VALUES (?,?,?,?,?,?)'
+        const query = 'INSERT INTO tbl_proveedor VALUES (?,?,?)'
 
-        database.query(query, [id, nombre, nombreUsuario, email, password, rol], (err, rows) => {
+        db_conection.query(query, [id, nombreProvedor, telefono], (err, rows) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ 'Error': 'Error en el servidor' })
             } else {
-                res.status(201).json({ 'Exito': 'Usuario Creado' })
+                res.status(201).json({ 'Exito': 'Proveedor Creado' })
             }
         })
 
     },
 
-    updateUsuarios: (req, res) => {
+    updateProvider: (req, res) => {
 
-        const { id, nombre, nombreUsuario, email, password, rol } = req.body
+        const { id, nombreProveedor, contacto} = req.body
 
-        const query = 'UPDATE tbl_usuario SET tbl_usu_nombre = ?, tbl_usu_nombre_usuario = ?, tbl_usu_correo = ?, tbl_usu_contrasena = ?, tbl_usu_rol = ? WHERE tbl_usu_id = ?'
+        const query = 'UPDATE tbl_proveedor SET tbl_prov_nombre = ?, tbl_prov_contacto = ? WHERE tbl_prov_id = ?'
 
-        database.query(query, [nombre, nombreUsuario, email, password, rol, id], (err, rows) => {
+        db_conection.query(query, [nombreProveedor, contacto, id], (err, rows) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ 'Error': 'Error en el servidor' })
             } else {
-                res.status(201).json({ 'Exito': 'Usuario Actualizado' })
+                res.status(201).json({ 'Exito': 'Proveedor Actualizado' })
             }
         })
 
     },
 
-    deleteUsuarios: (req, res) => {
+    deleteProvider: (req, res) => {
 
         const { id } = req.body
 
-        const query = 'DELETE FROM tbl_usuario where tbl_usu_id = ?'
+        const query = 'DELETE FROM tbl_proveedor where tbl_prov_id = ?'
 
-        database.query(query, [id], (err, rows) => {
+        db_conection.query(query, [id], (err, rows) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ 'Error': 'Error en el servidor' })
             } else {
-                res.status(201).json({ 'Exito': 'Usuario Eliminado' })
+                res.status(201).json({ 'Exito': 'Proveedor Eliminado' })
             }
         })
 
