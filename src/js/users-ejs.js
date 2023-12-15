@@ -76,6 +76,7 @@ function registrarUsuario() {
                 });
         };
         create();
+        limpiarFormulario();
     }
 }
 function limpiarFormulario() {
@@ -145,6 +146,7 @@ function actualizarInformacionUsuario() {
             });
     };
     actualizar();
+    limpiarFormulario();
 }
 function eliminarUsuario() {
     const data = {

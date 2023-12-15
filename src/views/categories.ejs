@@ -1,4 +1,4 @@
-<%- include('partials/header', {title: 'Página proveedores - JuanjoSuper'}); %>
+<%- include('partials/header', {title: 'Página categorias - JuanjoSuper'}); %>
 <body class="bg-light">
     <%- include('partials/menu'); %>
 
@@ -6,14 +6,13 @@
 
         <div class="row">
             <div class="col">
-                <h3>Listado de Proveedores</h3>
+                <h3>Listado de Categorias</h3>
                   <table class="table table-bordered table-striped">
                     
                     <thead>
                       <tr>
-                        <th>ID Proveedor</th>
-                        <th>Nombre Proveedor</th>
-                        <th>Teléfono Proveedor</th>
+                        <th>ID Categoria</th>
+                        <th>Nombre Categoria</th>
                         <th>Editar</th>
                       </tr>
                     </thead>
@@ -21,34 +20,30 @@
                     </tbody>
                   </table>
 
-                  <div class="modal fade" id="modal-proveedor" tabindex="-1" aria-labelledby="modal-proveedor-label"
+                  <div class="modal fade" id="modal-category" tabindex="-1" aria-labelledby="modal-category-label"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modal-proveedor-label">Nombre Proveedor</h5>
+                        <h5 class="modal-title" id="modal-category-label">Nombre Categoria</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form id="registro-proveedor-form">
                             <div class="mb-3">
-                                <label for="update-id" class="form-label">ID Proveedor</label>
+                                <label for="update-id" class="form-label">ID Categoria</label>
                                 <input type="text" class="form-control" id="update-id" name="update-id">
                             </div>
                             <div class="mb-3">
-                                <label for="update-name" class="form-label">Nombre Proveedor</label>
+                                <label for="update-name" class="form-label">Nombre Categoria</label>
                                 <input type="text" class="form-control" id="update-name" name="update-name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="update-phone" class="form-label">Teléfono Proveedor</label>
-                                <input type="text" class="form-control" id="update-phone" name="update-phone">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" onclick="eliminarProveedor()" class="btn btn-danger" id="eliminar-proveedor">Eliminar</button>
-                        <button type="button" onclick="actualizarInformacionProveedor()" class="btn btn-primary" id="guardar-proveedor">Guardar</button>
+                        <button type="button" onclick="eliminarCategoria()" class="btn btn-danger" id="eliminar-categoria">Eliminar</button>
+                        <button type="button" onclick="actualizarInformacionCategoria()" class="btn btn-primary" id="guardar-categoria">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -56,28 +51,24 @@
             </div>
         </div>
         <button class="btn btn-primary mt-3 mb-3" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Agregar Proveedor</button>
+            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Agregar Categoria</button>
 
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="12"
             id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Agregar Proveedor</h5>
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Agregar Categoria</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <div class="row">
                     <form class="col-md-6">
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre Proveedor</label>
+                            <label for="nombre" class="form-label">Nombre Categoria</label>
                             <input type="text" class="form-control" id="nombre" required>
                         </div>
                         <div class="mb-3">
-                            <label for="nombre-usuario" class="form-label">Telefono proveedor</label>
-                            <input type="text" class="form-control" id="telefono" required>
-                        </div>
-                        <div class="mb-3">
                             <button type="button" class="btn btn-primary m-1" id="guardar"
-                                onclick="registrarProveedor()">Guardar</button>
+                                onclick="registrarCategoria()">Guardar</button>
                             <button type="button" class="btn btn-secondary m-1" id="cancelar"
                                 onclick="limpiarFormulario()">Cancelar</button>
                             <button type="button" class="btn btn-secondary m-1" id="reestablecer"
@@ -92,6 +83,6 @@
     <%- include('partials/footer'); %>
     <%- include('partials/bootstrap-scripts'); %>
 
-    <script src="/providers-ejs.js"></script>
+    <script src="/categories-ejs.js"></script>
 </body>
 </html>

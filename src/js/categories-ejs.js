@@ -1,8 +1,8 @@
 var lastId;
 let url = "http://localhost:3000/";
 var idActual;
-function listarProveedores() {
-    fetch(url + "consultar-proveedores", {
+function listarCategorias() {
+    fetch(url + "consultar-categorias", {
         method: "GET",
     })
         .then((response) => response.json())
@@ -14,23 +14,20 @@ function listarProveedores() {
         let body = "";
         for (i = 0; i < data.length; i++) {
             body += `<tr>
-                <td>${data[i].tbl_prov_id}</td>
-                <td>${data[i].tbl_prov_nombre}</td>
-                <td>${data[i].tbl_prov_contacto}</td>
-                <td><button class="btn btn-primary btn-sm mx-1" onclick="mostrarInfoProveedor(${data[i].tbl_prov_id})" id="${data[i].tbl_prov_id}">Editar</button></td>
+                <td>${data[i].tbl_producto_categoria_id}</td>
+                <td>${data[i].tbl_producto_categoria_nombre}</td>
+                <td><button class="btn btn-primary btn-sm mx-1" onclick="mostrarInfoCategoria(${data[i].tbl_producto_categoria_id})" id="${data[i].tbl_producto_categoria_id}">Editar</button></td>
                 </tr>`;
-            lastId = data[i].tbl_prov_id;
+            lastId = data[i].tbl_producto_categoria_id;
         }
         document.getElementById("data").innerHTML = body;
     };
 }
-listarProveedores();
-function registrarProveedor() {
+listarCategorias();
+function registrarCategoria() {
     var nombre = document.getElementById("nombre").value;
-    var telefono = document.getElementById("telefono").value;
     if (
-        nombre == "" ||
-        telefono == ""
+        nombre == ""
     ) {
         alert(
             "Hay campos sin información en el formulario de registro, por favor completarlos previo a guardar."
@@ -40,11 +37,10 @@ function registrarProveedor() {
         const create = () => {
             const data = {
                 id: lastId + 1,
-                nombreProvedor: nombre,
-                telefono: telefono
+                nombreCategoria: nombre,
             };
 
-            fetch(url + "crear-proveedor", {
+            fetch(url + "crear-categoria", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -55,8 +51,8 @@ function registrarProveedor() {
                     if (res.status == 500) {
                         alert("error interno - Proveedor no creado");
                     } else {
-                        alert("Proveedor Creado");
-                        listarProveedores();
+                        alert("Categoria Creado");
+                        listarCategorias();
                     }
                 })
                 .catch((err) => {
@@ -69,34 +65,30 @@ function registrarProveedor() {
 }
 function limpiarFormulario() {
     document.getElementById("nombre").value = "";
-    document.getElementById("telefono").value = "";
 }
-function mostrarInfoProveedor(provedorId) {
-    fetch(url + "consultar-proveedor/" + provedorId, {
+function mostrarInfoCategoria(userId) {
+    fetch(url + "consultar-categoria/" + userId, {
         method: "GET",
     })
         .then((response) => response.json())
         .then((data) => {
-            document.getElementById("update-id").value = data[0].tbl_prov_id;
-            document.getElementById("update-name").value = data[0].tbl_prov_nombre;
-            document.getElementById("update-phone").value = data[0].tbl_prov_contacto;
-            idActual = data[0].tbl_prov_id;
-            $("#modal-proveedor").modal("show");
+            document.getElementById("update-id").value = data[0].tbl_producto_categoria_id;
+            document.getElementById("update-name").value = data[0].tbl_producto_categoria_nombre;
+            idActual = data[0].tbl_producto_categoria_id;
+            $("#modal-category").modal("show");
         })
         .catch((error) => console.log(error));
 }
 
-function actualizarInformacionProveedor() {
+function actualizarInformacionCategoria() {
     var nombreActualizado = document.getElementById("update-name").value;
-    var contactoActualizado = document.getElementById("update-phone").value;
     const actualizar = () => {
         const data = {
             id: idActual,
-            nombreProveedor: nombreActualizado,
-            contacto: contactoActualizado,
+            nombreCategoria: nombreActualizado,
         };
 
-        fetch(url + "editar-proveedor", {
+        fetch(url + "editar-categoria", {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -105,10 +97,10 @@ function actualizarInformacionProveedor() {
         })
             .then((res) => {
                 if (res.status == 500) {
-                    alert("error interno - proveedor no actualizado");
+                    alert("error interno - categoria no actualizada");
                 } else {
-                    alert("Proveedor Actualizado");
-                    listarProveedores();
+                    alert("Categoria Actualizada");
+                    listarCategorias();
                 }
             })
             .catch((err) => {
@@ -118,11 +110,11 @@ function actualizarInformacionProveedor() {
     actualizar();
     limpiarFormulario();
 }
-function eliminarProveedor() {
+function eliminarCategoria() {
     const data = {
         id: idActual,
     };
-    fetch(url + "eliminar-proveedor", {
+    fetch(url + "eliminar-categoria", {
         method: "DELETE",
         body: JSON.stringify(data),
         headers: {
@@ -131,11 +123,11 @@ function eliminarProveedor() {
     })
         .then((res) => {
             if (res.status == 500) {
-                alert("error interno - Proveedor no eliminado");
+                alert("error interno - Categoria no eliminada");
             } else {
-                alert("Proveedor eliminado");
-                listarProveedores();
-                $("#modal-proveedor").modal("hide");
+                alert("Categoria eliminada");
+                listarCategorias();
+                $("#modal-category").modal("hide");
             }
         })
         .catch((err) => {

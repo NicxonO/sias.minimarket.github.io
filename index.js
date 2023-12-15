@@ -25,6 +25,7 @@ const dashboardRoutes = require('./src/routes/dashboard');
 const usersRoutes = require('./src/routes/users').default;
 const loginRoutes = require('./src/routes/login').default;
 const providersRoutes = require('./src/routes/providers').default;
+const categoriesRoutes = require('./src/routes/categories').default;
 
 
 
@@ -44,6 +45,8 @@ expressApp.use(new loginRoutes().ruta);
 expressApp.use(dashboardRoutes);
 expressApp.use(new usersRoutes().ruta);
 expressApp.use(new providersRoutes().ruta);
+expressApp.use(new categoriesRoutes().ruta);
+
 
 
 
