@@ -15,6 +15,7 @@ class RouteUsuario {
         this.ruta.post('/crear', usersController.createUsuarios)
         this.ruta.put('/editar', usersController.updateUsuarios)
         this.ruta.delete('/eliminar', usersController.deleteUsuarios)
+        this.ruta.get('/usuario-activo',usersController.activeUser)
     }
 
 }

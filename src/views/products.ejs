@@ -1,0 +1,133 @@
+<%- include('partials/header', {title: 'Página productos - JuanjoSuper'}); %>
+<body class="bg-light">
+    <%- include('partials/menu'); %>
+
+    <main class="container mt-5">
+
+        <div class="row">
+            <div class="col">
+                <h3>Listado de Productos</h3>
+                  <table class="table table-bordered table-striped">
+                    
+                    <thead>
+                      <tr>
+                        <th>ID Producto</th>
+                        <th>Nombre Producto</th>
+                        <th>Categoria Producto</th>
+                        <th>Precio Compra Producto</th>
+                        <th>Precio Venta Producto</th>
+                        <th>Unidades Producto</th>
+                        <th>Proveedor</th>
+                        <th>Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody id="data">
+                    </tbody>
+                  </table>
+
+                  <div class="modal fade" id="modal-productos" tabindex="-1" aria-labelledby="modal-productos-label"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-productos-label">Nombre Producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registro-proveedor-form">
+                            <div class="mb-3">
+                                <label for="update-id" class="form-label">ID Producto</label>
+                                <input type="text" class="form-control" id="update-id" name="update-id">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-name" class="form-label">Nombre Producto</label>
+                                <input type="text" class="form-control" id="update-name" name="update-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-category" class="form-label">Categoria Producto</label>
+                                <input type="text" class="form-control" id="update-category" name="update-category">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-product-oprice" class="form-label">Precio Compra Producto</label>
+                                <input type="text" class="form-control" id="update-product-oprice" name="update-product-oprice">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-product-price" class="form-label">Precio Venta Producto</label>
+                                <input type="text" class="form-control" id="update-product-price" name="update-product-price">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-stock" class="form-label">Unidades producto</label>
+                                <input type="text" class="form-control" id="update-stock" name="update-stock">
+                            </div>
+                            <div class="mb-3">
+                                <label for="update-proveedor" class="form-label">Proveedor</label>
+                                <input type="text" class="form-control" id="update-proveedor" name="update-proveedor">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" onclick="eliminarProducto()" class="btn btn-danger" id="eliminar-producto">Eliminar</button>
+                        <button type="button" onclick="actualizarInformacionProducto()" class="btn btn-primary" id="guardar-producto">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3 mb-3" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Agregar Producto</button>
+
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="12"
+            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Agregar Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="row">
+                    <form class="col-md-6">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre producto</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria" class="form-label">Categoria producto</label>
+                            <input type="text" class="form-control" id="categoria" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="precio-compra" class="form-label">Precio compra</label>
+                            <input type="text" class="form-control" id="precio-compra" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="precio-venta" class="form-label">Precio venta</label>
+                            <input type="text" class="form-control" id="precio-venta" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="unidades" class="form-label">Unidades</label>
+                            <input type="text" class="form-control" id="unidades" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="proveedor" class="form-label">Proveedor</label>
+                            <input type="text" class="form-control" id="proveedor" required>
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-primary m-1" id="guardar"
+                                onclick="registrarProducto()">Guardar</button>
+                            <button type="button" class="btn btn-secondary m-1" id="cancelar"
+                                onclick="limpiarFormulario()">Cancelar</button>
+                            <button type="button" class="btn btn-secondary m-1" id="reestablecer"
+                                onclick="limpiarFormulario()">Reestablecer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer'); %>
+    <%- include('partials/bootstrap-scripts'); %>
+
+    <script src="/products-ejs.js"></script>
+</body>
+</html>

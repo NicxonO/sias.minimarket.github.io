@@ -93,6 +93,9 @@ const usuarioController = {
     },
     renderUsers: (req,res) => {
         res.render('users.ejs')
+    },
+    activeUser: (req,res) => {
+        res.status(201).json({activeUserId:req.session.user_id})
     }
 
 }

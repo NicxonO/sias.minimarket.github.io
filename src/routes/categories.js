@@ -1,4 +1,4 @@
-const providersController = require('../controllers/categories').default
+const categoriesController = require('../controllers/categories').default
 const express = require('express')
 
 
@@ -10,12 +10,12 @@ class RouteCategories {
     }
 
     config() {
-        this.ruta.get('/categorias', providersController.renderCategories);
-        this.ruta.get('/consultar-categorias', providersController.getCategories);
-        this.ruta.post('/crear-categoria', providersController.createCategory);
-        this.ruta.get('/consultar-categoria/:Documento', providersController.getCategory);
-        this.ruta.put('/editar-categoria', providersController.updateCategory)
-        this.ruta.delete('/eliminar-categoria', providersController.deleteCategory)
+        this.ruta.get('/categorias', categoriesController.renderCategories);
+        this.ruta.get('/consultar-categorias', categoriesController.getCategories);
+        this.ruta.post('/crear-categoria', categoriesController.createCategory);
+        this.ruta.get('/consultar-categoria/:Documento', categoriesController.getCategory);
+        this.ruta.put('/editar-categoria', categoriesController.updateCategory)
+        this.ruta.delete('/eliminar-categoria', categoriesController.deleteCategory)
     }
 
 }
